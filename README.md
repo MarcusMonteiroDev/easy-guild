@@ -1,0 +1,1 @@
+Aplicação desktop desenvolvida em Java para auxiliar mestres de RPG no gerenciamento de grupos de aventureiros (Party), permitindo controlar personagens, recompensas e eventos comuns durante uma sessão.
