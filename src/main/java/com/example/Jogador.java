@@ -1,5 +1,7 @@
 package com.example;
 
+import java.util.ArrayList;
+
 import com.example.enums.Classes;
 import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
@@ -12,12 +14,12 @@ public class Jogador {
     private String raca;
     private int vidaMax;
     private int vidaAtual;
-    private String xp;
-    private String ouro;
+    private int xp;
+    private int ouro;
     private int ataque;
     private int defesa;
-    private String[] idiomas;
-    private String[] equipamentos;
+    private ArrayList<String> idiomas;
+    private ArrayList<String> equipamentos;
 
     // getters e setters
     public String getNome() {
@@ -68,19 +70,19 @@ public class Jogador {
         this.vidaAtual = vidaAtual;
     }
 
-    public String getXp() {
+    public int getXp() {
         return xp;
     }
 
-    public void setXp(String xp) {
+    public void setXp(int xp) {
         this.xp = xp;
     }
 
-    public String getOuro() {
+    public int getOuro() {
         return ouro;
     }
 
-    public void setOuro(String ouro) {
+    public void setOuro(int ouro) {
         this.ouro = ouro;
     }
 
@@ -100,11 +102,11 @@ public class Jogador {
         this.defesa = defesa;
     }
 
-    public String[] getIdiomas() {
-        return idiomas;
+    public String getIdiomas() {
+        return String.join(", ", idiomas);
     }
 
-    public void setIdiomas(String[] idiomas) {
+    public void setIdiomas(ArrayList<String> idiomas) {
         for (String idioma : idiomas) {
             if (!verificaExistencia(idioma, Idiomas.class))
                 throw new IllegalArgumentException("Um dos idiomas informados não existe.");
@@ -112,11 +114,11 @@ public class Jogador {
         this.idiomas = idiomas;
     }
 
-    public String[] getEquipamentos() {
-        return equipamentos;
+    public String getEquipamentos() {
+        return String.join(", ", equipamentos);
     }
 
-    public void setEquipamentos(String[] equipamentos) {
+    public void setEquipamentos(ArrayList<String> equipamentos) {
         for (String equipamento : equipamentos) {
             if (!verificaExistencia(equipamento, Equipamentos.class))
                 throw new IllegalArgumentException("Um dos equipamentos informados não existe.");
