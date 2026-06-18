@@ -2,6 +2,8 @@ package com.example;
 
 import java.util.Scanner;
 
+import com.example.models.Party;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -82,7 +84,7 @@ public class Main {
 
                 case 1 -> party.listarJogadores();
 
-                case 2 -> party.cadastrarJogador();
+                case 2 -> party.cadastrarJogador(scanner);
             }
         }
 

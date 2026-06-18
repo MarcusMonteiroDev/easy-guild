@@ -1,18 +1,17 @@
-package com.example;
+package com.example.models;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Party {
-    private List<Jogador> jogadores = new ArrayList<>();
+    private ArrayList<Jogador> jogadores = new ArrayList<>();
 
     // getters e setters
-    public List<Jogador> getJogadores() {
+    public ArrayList<Jogador> getJogadores() {
         return jogadores;
     }
 
-    public void setJogadores(List<Jogador> jogadores) {
+    public void setJogadores(ArrayList<Jogador> jogadores) {
         this.jogadores = jogadores;
     }
 
@@ -62,9 +61,8 @@ public class Party {
         }
     }
 
-    // CONTINUAR DAQUI
-    public void cadastrarJogador() {
-        Scanner scanner = new Scanner(System.in);
+    public void cadastrarJogador(Scanner scanner) {
+
         Jogador jogador = new Jogador();
 
         System.out.println("Insira os dados do jogador.");
@@ -98,6 +96,7 @@ public class Party {
 
         scanner.nextLine(); // consome o ENTER deixado pelo último nextInt()
 
-        scanner.close();
+        jogadores.add(jogador);
+
     }
 }
