@@ -3,7 +3,6 @@
     -fx-background-color: #172032;
 }
 
-/* Nome Personagem */
 .label {
     -fx-text-fill: white;
 }
@@ -28,6 +27,7 @@
 #classeRaca {
     -fx-text-fill: #6a7b82;
     -fx-font-style: italic;
+    -fx-font-weight: bold;
 }
 
 #mainVBox {}
@@ -155,6 +155,15 @@
     -fx-background-radius: 10;
     -fx-padding: 8 12 8 12;
     -fx-cursor: hand;
+
+    /*
+-fx-pref-width: 50px;
+-fx-pref-height: 50px;
+-fx-min-width: 50px;
+-fx-min-height: 50px;
+-fx-max-width: 50px;
+-fx-max-height: 50px;
+*/
 }
 
 .btnAcao .label {
@@ -178,8 +187,14 @@
     -fx-text-fill: #2fbc8b;
 }
 
-#btnXp {}
+#btnXp .label {
+    -fx-text-fill: #7a85eb;
+}
 
-#btnOuro {}
+#btnOuro .label {
+    -fx-text-fill: #e0b817;
+}
 
-#btnMenosOuro {}
+#btnMenosOuro .label {
+    -fx-text-fill: #687589;
+}

@@ -1,0 +1,15 @@
+.root {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #172032;
+}
+
+#nomeItem {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#descricaoItem, #atributoItem {
+    -fx-text-fill: #6a7b82;
+    -fx-font-weight: bold;
+}
+
