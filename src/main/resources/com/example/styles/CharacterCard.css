@@ -1,0 +1,185 @@
+.root {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #172032;
+}
+
+/* Nome Personagem */
+.label {
+    -fx-text-fill: white;
+}
+
+#mainVBox {
+    /*-fx-background-color: #172032;*/
+}
+
+#hBox_1 {
+    -fx-border-color: transparent transparent #2a364a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+#nivelPersonagem {
+    -fx-background-color: #4f46e5;
+    -fx-text-fill: white;
+    -fx-font-weight: 800;
+    -fx-background-radius: 10px;
+    -fx-padding: 2px;
+}
+
+#classeRaca {
+    -fx-text-fill: #6a7b82;
+    -fx-font-style: italic;
+}
+
+#mainVBox {}
+
+#nomePersonagem {
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
+
+#btnExcluir {
+    -fx-background-color: transparent;
+}
+
+/* XP e HP */
+
+.info {
+    -fx-background-color: #1e293b;
+}
+
+.xpHp {
+    -fx-font-weight: 750;
+}
+
+.progress-bar {
+    -fx-background-color: transparent;
+    -fx-padding: 2;
+}
+
+.progress-bar .track {
+    -fx-background-color: #2eb709;
+    -fx-background-radius: 10;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #4f46e5;
+    -fx-background-radius: 10;
+}
+
+#barraXp {
+    -fx-pref-height: 14px;
+}
+
+#barraXp .track {
+    -fx-background-color: #099ab7;
+}
+
+#vBoxXp {
+    -fx-border-color: transparent transparent #2a364a transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+#labelHp {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+#hpPoints {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Atributos */
+
+.hBoxAtributos {
+    -fx-border-color: transparent #2a364a #2a364a transparent;
+    -fx-border-width: 0 1 1 0;
+}
+
+.labelAtributos {
+    -fx-text-fill: #6a7b82;
+    -fx-font-size: 14px;
+}
+
+.valoresAtributos {
+    -fx-font-weight: bolder;
+    -fx-font-size: 18px;
+}
+
+#valorOuro {
+    -fx-text-fill: #f4cb15e2;
+}
+
+/* Inventário */
+
+#labelInventario {
+    -fx-text-fill: #6a7b82;
+    -fx-font-size: 18px;
+    -fx-font-weight: bolder;
+}
+
+.botaoAdd {
+    -fx-background-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-color: #5d55eb;
+    -fx-border-radius: 10px;
+    -fx-text-fill: #5d55eb;
+    -fx-font-weight: bold;
+    -fx-padding: 5px;
+    -fx-underline: false;
+    -fx-font-size: 10px;
+}
+
+#labelIdiomas {
+    -fx-text-fill: #6a7b82;
+    -fx-font-size: 16px;
+    -fx-font-weight: bolder;
+}
+
+.labelIdioma {
+    -fx-font-size: 10px;
+    -fx-text-fill: white;
+
+    -fx-border-color: #6a7b82;
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+
+    -fx-padding: 4px 8px;
+}
+
+/* Botões ações */
+
+.btnAcao {
+    -fx-background-color: #1f2a3a;
+    -fx-background-radius: 10;
+    -fx-padding: 8 12 8 12;
+    -fx-cursor: hand;
+}
+
+.btnAcao .label {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+}
+
+.btnAcao:hover {
+    -fx-background-color: #27364a;
+}
+
+.btnAcao:pressed {
+    -fx-background-color: #172032;
+}
+
+#btnDano .label {
+    -fx-text-fill: #e4696b;
+}
+
+#btnCura .label {
+    -fx-text-fill: #2fbc8b;
+}
+
+#btnXp {}
+
+#btnOuro {}
+
+#btnMenosOuro {}

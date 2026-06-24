@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 
 public class MainScreemController {
-
+/*
     @FXML
     private AnchorPane telaAventureiros;
 
@@ -28,5 +28,5 @@ public class MainScreemController {
         telaAventureiros.setVisible(false);
         telaDados.setVisible(true);
     }
-
+ */
 }
