@@ -1,6 +1,6 @@
-.root {
+* {
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    -fx-background-color: #172032;
+    
 }
 
 .label {
@@ -14,6 +14,7 @@
 #hBox_1 {
     -fx-border-color: transparent transparent #2a364a transparent;
     -fx-border-width: 0 0 1 0;
+    -fx-background-color: #172032;
 }
 
 #nivelPersonagem {
@@ -149,6 +150,10 @@
 }
 
 /* Botões ações */
+
+#gridBotoes {
+    -fx-background-color: #172032;
+}
 
 .btnAcao {
     -fx-background-color: #1f2a3a;

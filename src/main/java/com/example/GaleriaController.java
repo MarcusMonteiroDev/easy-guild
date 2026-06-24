@@ -1,56 +1,49 @@
 package com.example;
 
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.control.Label;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+
+import java.io.IOException;
 
 public class GaleriaController {
 
-    // Injetando o FlowPane que criamos no Scene Builder
     @FXML
     private FlowPane galeriaAventureiros;
 
     @FXML
     public void initialize() {
-        // Quando a tela carregar, vamos adicionar 10 cards de exemplo
-        for (int i = 1; i <= 100; i++) {
-            VBox novoCard = criarCard("Produto " + i, "R$ " + (10 * i) + ",00");
-            
-            // Adiciona o card gerado dentro do FlowPane
+        for (int i = 1; i <= 1; i++) {
+            VBox novoCard = criarCard();
             galeriaAventureiros.getChildren().add(novoCard);
         }
     }
 
     /**
-     * Método auxiliar para criar o visual do Card.
-     * Você pode adicionar imagens, botões, e mudar as cores aqui.
+     * Método auxiliar para criar o visual do Card carregando o FXML
+     * CharacterCard.fxml.
+     * Configura o título e preço nos Labels do card.
      */
-    private VBox criarCard(String tituloProduto, String precoProduto) {
-        VBox card = new VBox();
-        
-        // Estilizando o card (cor de fundo, borda arredondada, tamanho, sombra, etc.)
-        card.setStyle("-fx-background-color: white; " +
-                      "-fx-background-radius: 10; " +
-                      "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);");
-        
-        // Tamanho fixo do card
-        card.setPrefSize(150, 200); 
-        card.setPadding(new Insets(10));
-        card.setSpacing(10); // Espaço interno entre o título e o preço
+    private VBox criarCard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CharacterCard.fxml"));
+            VBox card = loader.load();
 
-        // Criando os textos do card
-        Label lblTitulo = new Label(tituloProduto);
-        lblTitulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14px;");
-        
-        Label lblPreco = new Label(precoProduto);
-        lblPreco.setStyle("-fx-text-fill: green;");
-
-        // Adicionando os textos dentro do card
-        // Se tivesse uma imagem (ImageView), você adicionaria aqui também
-        card.getChildren().addAll(lblTitulo, lblPreco);
-
-        return card;
+            // Define tamanho fixo do card
+            card.setPrefWidth(500);
+            card.setPrefHeight(600);
+            card.setMinWidth(500);
+            card.setMinHeight(600);
+            card.setMaxWidth(500);
+            card.setMaxHeight(600);
+            return card;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new VBox(); // Retorna um VBox vazio em caso de erro
+        }
     }
+
 }

@@ -15,11 +15,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <VBox fx:id="mainVBox" minHeight="600.0" minWidth="400.0" stylesheets="@../styles/CharacterCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
 
-   <children>
+         <children>
 
-      <!-- HEADER -->
+            <!-- HEADER -->
       <HBox fx:id="hBox_1" spacing="10" VBox.vgrow="ALWAYS">
          <children>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
@@ -29,29 +30,32 @@
                         <Label fx:id="nomePersonagem" text="Nome">
                            <HBox.margin>
                               <Insets />
-                           </HBox.margin></Label>
+                           </HBox.margin>
+                        </Label>
                         <Label fx:id="nivelPersonagem" text="Lvl 30">
                            <HBox.margin>
                               <Insets />
-                           </HBox.margin></Label>
+                           </HBox.margin>
+                        </Label>
                      </children>
                      <VBox.margin>
                         <Insets left="5.0" top="5.0" />
                      </VBox.margin>
                   </HBox>
 
-                  <HBox spacing="10" VBox.vgrow="ALWAYS">
+                        <HBox spacing="10" VBox.vgrow="ALWAYS">
                      <children>
                         <Label fx:id="classeRaca" text="Raça - Classe">
                            <HBox.margin>
                               <Insets left="5.0" />
-                           </HBox.margin></Label>
+                           </HBox.margin>
+                        </Label>
                      </children>
                   </HBox>
                </children>
             </VBox>
 
-            <Button fx:id="btnExcluir" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" textFill="#fff9f9" HBox.hgrow="ALWAYS">
+                  <Button fx:id="btnExcluir" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" textFill="#fff9f9" HBox.hgrow="ALWAYS">
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,11 +71,12 @@
                </HBox.margin>
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
-               </cursor></Button>
+               </cursor>
+            </Button>
          </children>
       </HBox>
 
-            <!-- HP -->
+                  <!-- HP -->
       <VBox prefHeight="0.0" prefWidth="400.0" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
             <HBox spacing="5">
@@ -93,7 +98,7 @@
                </children>
             </HBox>
 
-                  <ProgressBar prefHeight="18.0" prefWidth="350.0" progress="0.0">
+                        <ProgressBar prefHeight="18.0" prefWidth="350.0" progress="0.0">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
@@ -107,7 +112,7 @@
          </VBox.margin>
       </VBox>
 
-            <!-- XP -->
+                  <!-- XP -->
       <VBox fx:id="vBoxXp" prefHeight="0.0" prefWidth="400.0" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
             <HBox spacing="5">
@@ -129,7 +134,7 @@
                </children>
             </HBox>
 
-                  <ProgressBar fx:id="barraXp" prefHeight="18.0" prefWidth="350.0" progress="0.0">
+                        <ProgressBar fx:id="barraXp" prefHeight="18.0" prefWidth="350.0" progress="0.0">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
@@ -137,11 +142,11 @@
          </children>
       </VBox>
 
-            <!-- STATS -->
+                  <!-- STATS -->
       <HBox styleClass="info" VBox.vgrow="ALWAYS">
          <children>
 
-                  <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" spacing="2.0">
                      <children>
@@ -157,7 +162,7 @@
                </children>
             </VBox>
 
-                  <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" spacing="2.0">
                      <children>
@@ -173,7 +178,7 @@
                </children>
             </VBox>
 
-                  <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
                <children>
                   <HBox alignment="CENTER" spacing="3.0">
                      <children>
@@ -189,14 +194,14 @@
                </children>
             </VBox>
 
-               </children>
+                     </children>
       </HBox>
 
-            <!-- INVENTÁRIO -->
+                  <!-- INVENTÁRIO -->
       <VBox spacing="5.0" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
 
-                  <HBox spacing="10">
+                        <HBox spacing="10">
                <children>
                   <Label fx:id="labelInventario" text="Inventário">
                      <HBox.margin>
@@ -211,29 +216,29 @@
                </children>
             </HBox>
 
-                  <VBox spacing="5">
+                        <VBox spacing="5">
                <children>
                   <Label text="Lista de items" />
                </children>
             </VBox>
 
-               </children>
+                     </children>
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </VBox>
 
-            <!-- IDIOMAS -->
+                  <!-- IDIOMAS -->
       <VBox spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
 
-                  <Label fx:id="labelIdiomas" text="Idiomas">
+                        <Label fx:id="labelIdiomas" text="Idiomas">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
             </Label>
 
-                  <FlowPane hgap="10" vgap="5">
+                        <FlowPane hgap="10" vgap="5">
                <children>
                   <Label styleClass="labelIdioma" text="Idioma 1">
                      <FlowPane.margin>
@@ -244,9 +249,9 @@
                </children>
             </FlowPane>
 
-               </children>
+                     </children>
       </VBox>
-      <GridPane alignment="CENTER" prefHeight="81.0" prefWidth="500.0">
+      <GridPane fx:id="gridBotoes" alignment="CENTER" prefHeight="81.0" prefWidth="500.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -273,7 +278,8 @@
                </graphic>
                <GridPane.margin>
                   <Insets bottom="16.0" left="20.0" right="20.0" top="14.0" />
-               </GridPane.margin></Button>
+               </GridPane.margin>
+            </Button>
             <Button fx:id="btnCura" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao" GridPane.columnIndex="1">
                <graphic>
                   <VBox alignment="CENTER" spacing="2.0">
@@ -298,7 +304,8 @@
                         <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/satr-purple.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                         <Label text="+XP" />
                      </children>
                   </VBox>
@@ -314,7 +321,8 @@
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/plus.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                         <Label text="+Ouro" />
                      </children>
                   </VBox>
@@ -330,7 +338,8 @@
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/minus.png" />
-                           </image></ImageView>
+                           </image>
+                        </ImageView>
                         <Label text="-Ouro" />
                      </children>
                   </VBox>
@@ -342,5 +351,5 @@
          </children>
       </GridPane>
 
-   </children>
+         </children>
 </VBox>
