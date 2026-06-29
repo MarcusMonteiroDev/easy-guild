@@ -15,8 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox fx:id="mainVBox" minHeight="600.0" minWidth="400.0" stylesheets="@../styles/CharacterCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="mainVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" stylesheets="@../styles/CharacterCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.CardCharacterController">
 
          <children>
 
@@ -77,7 +76,7 @@
       </HBox>
 
                   <!-- HP -->
-      <VBox prefHeight="0.0" prefWidth="400.0" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
+      <VBox spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
             <HBox spacing="5">
                <children>
@@ -89,18 +88,14 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label fx:id="labelHp" styleClass="xpHp" text="HP" />
-                  <Label fx:id="hpPoints" text="35 / 40">
-                     <padding>
-                        <Insets left="240.0" />
-                     </padding>
-                  </Label>
+                  <Label text="HP" />
+                  <Label fx:id="hpPoints" layoutX="40.0" layoutY="10.0" text="35 / 40" />
                </children>
             </HBox>
 
-                        <ProgressBar prefHeight="18.0" prefWidth="350.0" progress="0.0">
+                        <ProgressBar progress="0.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
-                  <Insets left="5.0" />
+                  <Insets />
                </VBox.margin>
             </ProgressBar>
          </children>
@@ -113,7 +108,7 @@
       </VBox>
 
                   <!-- XP -->
-      <VBox fx:id="vBoxXp" prefHeight="0.0" prefWidth="400.0" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
+      <VBox fx:id="vBoxXp" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
          <children>
             <HBox spacing="5">
                <children>
@@ -125,16 +120,12 @@
                         <Insets left="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label styleClass="xpHp" text="XP" />
-                  <Label text="35 / 40">
-                     <padding>
-                        <Insets left="270.0" />
-                     </padding>
-                  </Label>
+                  <Label text="XP" />
+                  <Label text="35 / 40" fx:id="xpPoints" />
                </children>
             </HBox>
 
-                        <ProgressBar fx:id="barraXp" prefHeight="18.0" prefWidth="350.0" progress="0.0">
+                        <ProgressBar fx:id="barraXp" progress="0.0">
                <VBox.margin>
                   <Insets left="5.0" />
                </VBox.margin>
@@ -158,7 +149,7 @@
                         <Label styleClass="labelAtributos" text="ATK" />
                      </children>
                   </HBox>
-                  <Label styleClass="valoresAtributos" text="10" />
+                  <Label fx:id="valorAtk" styleClass="valoresAtributos" text="10" />
                </children>
             </VBox>
 
@@ -174,7 +165,7 @@
                         <Label styleClass="labelAtributos" text="DEF" />
                      </children>
                   </HBox>
-                  <Label styleClass="valoresAtributos" text="10" />
+                  <Label fx:id="valorDef" styleClass="valoresAtributos" text="10" />
                </children>
             </VBox>
 
@@ -210,7 +201,7 @@
                   </Label>
                   <Button mnemonicParsing="false" styleClass="botaoAdd" text="+ Add">
                      <HBox.margin>
-                        <Insets left="240.0" top="4.0" />
+                        <Insets top="4.0" />
                      </HBox.margin>
                   </Button>
                </children>
@@ -251,19 +242,19 @@
 
                      </children>
       </VBox>
-      <GridPane fx:id="gridBotoes" alignment="CENTER" prefHeight="81.0" prefWidth="500.0">
+      <GridPane fx:id="gridBotoes" alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+          <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnDano" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="47.0" prefWidth="45.0" styleClass="btnAcao">
+            <Button fx:id="btnDano" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao">
                <graphic>
                   <VBox alignment="CENTER" spacing="2.0">
                      <children>
@@ -277,7 +268,7 @@
                   </VBox>
                </graphic>
                <GridPane.margin>
-                  <Insets bottom="16.0" left="20.0" right="20.0" top="14.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
             <Button fx:id="btnCura" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao" GridPane.columnIndex="1">
@@ -294,7 +285,7 @@
                   </VBox>
                </graphic>
                <GridPane.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
             <Button fx:id="btnXp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao" GridPane.columnIndex="2">
@@ -311,7 +302,7 @@
                   </VBox>
                </graphic>
                <GridPane.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
             <Button fx:id="btnOuro" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao" GridPane.columnIndex="3">
@@ -328,7 +319,7 @@
                   </VBox>
                </graphic>
                <GridPane.margin>
-                  <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
             <Button fx:id="btnMenosOuro" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" styleClass="btnAcao" GridPane.columnIndex="4">
@@ -345,7 +336,7 @@
                   </VBox>
                </graphic>
                <GridPane.margin>
-                  <Insets bottom="15.0" left="20.0" right="20.0" top="15.0" />
+                  <Insets />
                </GridPane.margin>
             </Button>
          </children>

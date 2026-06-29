@@ -9,7 +9,9 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 
-public class GaleriaController {
+import com.example.models.Jogador;
+
+public class CharacterScreemController {
 
     @FXML
     private FlowPane galeriaAventureiros;
@@ -28,17 +30,34 @@ public class GaleriaController {
      * Configura o título e preço nos Labels do card.
      */
     private VBox criarCard() {
+
+        // Cria o objeto do Jogador
+        Jogador jogador = new Jogador();
+
+        jogador.setNome("Arthas");
+        jogador.setNivel(15);
+        jogador.setClasse("GUERREIRO");
+        jogador.setRaca("HUMANO");
+
+        jogador.setVidaMax(100);
+        jogador.setVidaAtual(85);
+
+        jogador.setxpAtual(250);
+        jogador.setxpProxNivel(300);
+        jogador.setOuro(150);
+
+        jogador.setAtaque(20);
+        jogador.setDefesa(15);
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("fxml/CharacterCard.fxml"));
             VBox card = loader.load();
 
-            // Define tamanho fixo do card
-            card.setPrefWidth(500);
-            card.setPrefHeight(600);
-            card.setMinWidth(500);
-            card.setMinHeight(600);
-            card.setMaxWidth(500);
-            card.setMaxHeight(600);
+            CardCharacterController controller = loader.getController();
+            controller.criarPersonagem(jogador.getNome(), jogador.getNivel(), jogador.getRaca(), jogador.getClasse(),
+                    jogador.getVidaMax(), jogador.getVidaAtual(), jogador.getxpAtual(), jogador.getxpProxNivel(), jogador.getOuro(),
+                    jogador.getAtaque(), jogador.getDefesa());
+
             return card;
         } catch (IOException e) {
             e.printStackTrace();

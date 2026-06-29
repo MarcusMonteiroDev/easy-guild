@@ -10,11 +10,13 @@ import com.example.enums.Racas;
 public class Jogador {
 
     private String nome;
+    private int nivel;
     private String classe;
     private String raca;
     private int vidaMax;
     private int vidaAtual;
-    private int xp;
+    private int xpProxNivel;
+    private int xpAtual;
     private int ouro;
     private int ataque;
     private int defesa;
@@ -28,6 +30,14 @@ public class Jogador {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
     }
 
     public String getClasse() {
@@ -70,12 +80,20 @@ public class Jogador {
         this.vidaAtual = vidaAtual;
     }
 
-    public int getXp() {
-        return xp;
+    public int getxpProxNivel() {
+        return xpProxNivel;
     }
 
-    public void setXp(int xp) {
-        this.xp = xp;
+    public void setxpProxNivel(int xpProxNivel) {
+        this.xpProxNivel = xpProxNivel;
+    }
+
+    public int getxpAtual() {
+        return xpAtual;
+    }
+
+    public void setxpAtual(int xpAtual) {
+        this.xpAtual = xpAtual;
     }
 
     public int getOuro() {

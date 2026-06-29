@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="telaAventureiros" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.GaleriaController">
+<AnchorPane fx:id="telaAventureiros" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.CharacterScreemController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -43,9 +43,9 @@
                   </HBox>
                </children>
             </GridPane>
-            <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="266.0" prefWidth="600.0" style="-fx-border-color: BLUE;" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" prefHeight="266.0" style="-fx-border-color: BLUE;" VBox.vgrow="ALWAYS">
                <content>
-                  <FlowPane fx:id="galeriaAventureiros" hgap="15.0" prefHeight="200.0" prefWidth="200.0" vgap="15.0" />
+                  <FlowPane fx:id="galeriaAventureiros" alignment="CENTER" columnHalignment="CENTER" hgap="15.0" vgap="15.0" />
                </content>
             </ScrollPane>
          </children>
