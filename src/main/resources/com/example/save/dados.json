@@ -1,0 +1,69 @@
+{
+  "jogadores": [
+    {
+      "nome": "Thorin",
+      "nivel": 12,
+      "classe": "GUERREIRO",
+      "raca": "ANAO",
+      "vidaMax": 100,
+      "vidaAtual": 92,
+      "xpProxNivel": 250,
+      "xpAtual": 180,
+      "ouro": 320,
+      "ataque": 22,
+      "defesa": 18
+    },
+    {
+      "nome": "Lyra",
+      "nivel": 10,
+      "classe": "MAGO",
+      "raca": "ELFO",
+      "vidaMax": 75,
+      "vidaAtual": 68,
+      "xpProxNivel": 220,
+      "xpAtual": 140,
+      "ouro": 95,
+      "ataque": 28,
+      "defesa": 8
+    },
+    {
+      "nome": "Kael",
+      "nivel": 8,
+      "classe": "PATRULHEIRO",
+      "raca": "HUMANO",
+      "vidaMax": 85,
+      "vidaAtual": 71,
+      "xpProxNivel": 180,
+      "xpAtual": 95,
+      "ouro": 140,
+      "ataque": 19,
+      "defesa": 11
+    },
+    {
+      "nome": "Morgana",
+      "nivel": 14,
+      "classe": "CLERIGO",
+      "raca": "HUMANO",
+      "vidaMax": 90,
+      "vidaAtual": 90,
+      "xpProxNivel": 320,
+      "xpAtual": 275,
+      "ouro": 210,
+      "ataque": 16,
+      "defesa": 14
+    },
+    {
+      "nome": "Zarek",
+      "nivel": 18,
+      "classe": "BARBARO",
+      "raca": "ORC",
+      "vidaMax": 95,
+      "vidaAtual": 60,
+      "xpProxNivel": 400,
+      "xpAtual": 350,
+      "ouro": 480,
+      "ataque": 30,
+      "defesa": 10
+    }
+  ]
+}

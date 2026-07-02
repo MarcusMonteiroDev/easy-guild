@@ -20,8 +20,8 @@ public class Jogador {
     private int ouro;
     private int ataque;
     private int defesa;
-    private ArrayList<String> idiomas;
-    private ArrayList<String> equipamentos;
+    // private ArrayList<String> idiomas;
+    // private ArrayList<Equipamento> equipamentos;
 
     // getters e setters
     public String getNome() {
@@ -119,31 +119,19 @@ public class Jogador {
     public void setDefesa(int defesa) {
         this.defesa = defesa;
     }
-
-    public String getIdiomas() {
-        return String.join(", ", idiomas);
-    }
-
-    public void setIdiomas(ArrayList<String> idiomas) {
-        for (String idioma : idiomas) {
-            if (!verificaExistencia(idioma, Idiomas.class))
-                throw new IllegalArgumentException("Um dos idiomas informados não existe.");
-        }
-        this.idiomas = idiomas;
-    }
-
-    public String getEquipamentos() {
-        return String.join(", ", equipamentos);
-    }
-
-    public void setEquipamentos(ArrayList<String> equipamentos) {
-        for (String equipamento : equipamentos) {
-            if (!verificaExistencia(equipamento, Equipamentos.class))
-                throw new IllegalArgumentException("Um dos equipamentos informados não existe.");
-        }
-        this.equipamentos = equipamentos;
-    }
-
+    /*
+     * public String getIdiomas() {
+     * return String.join(", ", idiomas);
+     * }
+     * 
+     * public void setIdiomas(ArrayList<String> idiomas) {
+     * for (String idioma : idiomas) {
+     * if (!verificaExistencia(idioma, Idiomas.class))
+     * throw new IllegalArgumentException("Um dos idiomas informados não existe.");
+     * }
+     * this.idiomas = idiomas;
+     * }
+     */
     // metodos privados
 
     // verifica se um valor esta presente em um enum
@@ -162,5 +150,29 @@ public class Jogador {
     }
 
     // metodos publicos
-
+    @Override
+    public String toString() {
+        return """
+                Nome: %s
+                Nível: %d
+                Classe: %s
+                Raça: %s
+                Vida: %d/%d
+                XP: %d/%d
+                Ouro: %d
+                Ataque: %d
+                Defesa: %d
+                """.formatted(
+                nome,
+                nivel,
+                classe,
+                raca,
+                vidaAtual,
+                vidaMax,
+                xpAtual,
+                xpProxNivel,
+                ouro,
+                ataque,
+                defesa);
+    }
 }

@@ -1,7 +1,6 @@
 package com.example.models;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Party {
     private ArrayList<Jogador> jogadores = new ArrayList<>();
@@ -18,5 +17,18 @@ public class Party {
     // metodos privados
 
     // metodos publicos
+    public void setJogador(Jogador jogador) {
+        jogadores.add(jogador);
+    }
+
+    @Override
+    public String toString() {
+        return jogadores.isEmpty()
+                ? "A party não possui jogadores."
+                : jogadores.stream()
+                        .map(Jogador::toString)
+                        .reduce("=== PARTY ===\n\n",
+                                (a, b) -> a + b + "\n--------------------\n");
+    }
 
 }
