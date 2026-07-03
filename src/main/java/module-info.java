@@ -3,6 +3,7 @@ module com.example {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
+    requires javafx.base;
     exports com.example.models;
 
     opens com.example.controllers to javafx.fxml;

@@ -7,117 +7,200 @@ import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
 import com.example.enums.Racas;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Jogador {
 
-    private String nome;
-    private int nivel;
-    private String classe;
-    private String raca;
-    private int vidaMax;
-    private int vidaAtual;
-    private int xpProxNivel;
-    private int xpAtual;
-    private int ouro;
-    private int ataque;
-    private int defesa;
+    private final StringProperty nome = new SimpleStringProperty(this, "nome", "Personagem");
+
+    private final IntegerProperty nivel = new SimpleIntegerProperty(this, "nivel", 1);
+
+    private final StringProperty classe = new SimpleStringProperty(this, "classe", "Classe");
+
+    private final StringProperty raca = new SimpleStringProperty(this, "raca", "Raça");
+
+    private final IntegerProperty vidaMax = new SimpleIntegerProperty(this, "vidaMax", 100);
+
+    private final IntegerProperty vidaAtual = new SimpleIntegerProperty(this, "vidaAtual", 100);
+
+    private final BooleanProperty jogadorVivo = new SimpleBooleanProperty(this, "jogadorVivo", true);
+
+    private final IntegerProperty xpProxNivel = new SimpleIntegerProperty(this, "xpProxNivel", 100);
+
+    private final IntegerProperty xpAtual = new SimpleIntegerProperty(this, "xpAtual", 100);
+
+    private final IntegerProperty ouro = new SimpleIntegerProperty(this, "ouro", 0);
+
+    private final IntegerProperty ataque = new SimpleIntegerProperty(this, "ataque", 10);
+
+    private final IntegerProperty defesa = new SimpleIntegerProperty(this, "defesa", 10);
+
     // private ArrayList<String> idiomas;
     // private ArrayList<Equipamento> equipamentos;
 
+    // construtor
+    public Jogador() {
+        this.vidaAtual.addListener((observable, valorAntigo, valorNovo) -> {
+            atualizarEstadoJogador(valorNovo.intValue());
+        });
+    }
+
     // getters e setters
     public String getNome() {
-        return nome;
+        return nome.get();
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.nome.set(nome);
+    }
+
+    public StringProperty nomProperty() {
+        return nome;
     }
 
     public int getNivel() {
-        return nivel;
+        return nivel.get();
     }
 
     public void setNivel(int nivel) {
-        this.nivel = nivel;
+        this.nivel.set(nivel);
+    }
+
+    public IntegerProperty nivelProperty() {
+        return nivel;
     }
 
     public String getClasse() {
-        return classe;
+        return classe.get();
     }
 
     public void setClasse(String classe) {
         if (verificaExistencia(classe, Classes.class))
-            this.classe = classe;
+            this.classe.set(classe);
         else
             throw new IllegalArgumentException("A classe informada não existe");
     }
 
+    public StringProperty classeProperty() {
+        return classe;
+    }
+
     public String getRaca() {
-        return raca;
+        return raca.get();
     }
 
     public void setRaca(String raca) {
         if (verificaExistencia(raca, Racas.class))
-            this.raca = raca;
+            this.raca.set(raca);
         else
             throw new IllegalArgumentException("A raça informada não existe");
     }
 
+    public StringProperty racaProperty() {
+        return raca;
+    }
+
     public int getVidaMax() {
-        return vidaMax;
+        return vidaMax.get();
     }
 
     public void setVidaMax(int vidaMax) {
         verificaIntervalo(vidaMax);
-        this.vidaMax = vidaMax;
+        this.vidaMax.set(vidaMax);
+    }
+
+    public IntegerProperty vidaMaxProperty() {
+        return vidaMax;
     }
 
     public int getVidaAtual() {
-        return vidaAtual;
+        return vidaAtual.get();
     }
 
     public void setVidaAtual(int vidaAtual) {
         verificaIntervalo(vidaAtual);
-        this.vidaAtual = vidaAtual;
+        this.vidaAtual.set(vidaAtual);
+    }
+
+    public IntegerProperty vidaAtualProperty() {
+        return vidaAtual;
+    }
+
+    public boolean getJogadorVivo() {
+        return jogadorVivo.get();
+    }
+
+    public void setJogadorVivo(boolean valor) {
+        this.jogadorVivo.set(valor);
+    }
+
+    public BooleanProperty jogadorVivoProperty() {
+        return jogadorVivo;
     }
 
     public int getxpProxNivel() {
-        return xpProxNivel;
+        return xpProxNivel.get();
     }
 
     public void setxpProxNivel(int xpProxNivel) {
-        this.xpProxNivel = xpProxNivel;
+        this.xpProxNivel.set(xpProxNivel);
+    }
+
+    public IntegerProperty xpProxNivelProperty() {
+        return xpProxNivel;
     }
 
     public int getxpAtual() {
-        return xpAtual;
+        return xpAtual.get();
     }
 
     public void setxpAtual(int xpAtual) {
-        this.xpAtual = xpAtual;
+        this.xpAtual.set(xpAtual);
+    }
+
+    public IntegerProperty xpAtualProperty() {
+        return xpAtual;
     }
 
     public int getOuro() {
+        return ouro.get();
+    }
+
+    public void setOuro(int valor) {
+        this.ouro.set(valor);
+    }
+
+    public IntegerProperty ouroProperty() {
         return ouro;
     }
 
-    public void setOuro(int ouro) {
-        this.ouro = ouro;
-    }
-
     public int getAtaque() {
-        return ataque;
+        return ataque.get();
     }
 
     public void setAtaque(int ataque) {
-        this.ataque = ataque;
+        this.ataque.set(ataque);
+    }
+
+    public IntegerProperty ataqueProperty() {
+        return ataque;
     }
 
     public int getDefesa() {
-        return defesa;
+        return defesa.get();
     }
 
     public void setDefesa(int defesa) {
-        this.defesa = defesa;
+        this.defesa.set(defesa);
+    }
+
+    public IntegerProperty defesaProperty() {
+        return defesa;
     }
     /*
      * public String getIdiomas() {
@@ -132,6 +215,7 @@ public class Jogador {
      * this.idiomas = idiomas;
      * }
      */
+
     // metodos privados
 
     // verifica se um valor esta presente em um enum
@@ -147,6 +231,14 @@ public class Jogador {
     private void verificaIntervalo(int valor) {
         if (valor > 100 || valor < 0)
             throw new IllegalArgumentException("Valor inválido para o parâmetro inserido");
+    }
+
+    private void atualizarEstadoJogador(int valorNovo) {
+        if (valorNovo <= 0) {
+            jogadorVivo.set(false);
+            System.out.println("O jogador morreu");
+        }
+            
     }
 
     // metodos publicos

@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import java.io.IOException;
 import com.example.models.Jogador;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -58,85 +59,69 @@ public class CardCharacterController {
     @FXML
     private Button btnMenosOuro;
 
+    private Jogador jogador;
+
     @FXML
     public void initialize() {
+
+        this.jogador = new Jogador();
+
+        nomePersonagem.textProperty().bind(jogador.nomProperty());
+        classeRaca.textProperty().bind(Bindings.format("%s - %s", jogador.racaProperty(), jogador.classeProperty()));
+        nivelPersonagem.textProperty().bind(Bindings.concat("Lvl ", jogador.nivelProperty()));
+        hpPoints.textProperty().bind(jogador.vidaAtualProperty().asString());
+        hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
+        xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
+        xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
+        valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
+        valorDef.textProperty().bind(jogador.defesaProperty().asString());
+        valorOuro.textProperty().bind(jogador.ouroProperty().asString());
+
         System.out.println("Card de personagem criado");
 
     }
 
     public void criarPersonagem(Jogador jogador) {
-        nomePersonagem.setText(jogador.getNome());
-        nivelPersonagem.setText("Lvl " + String.valueOf(jogador.getNivel()));
-        classeRaca.setText(String.format("%s - %s", jogador.getRaca(), jogador.getClasse()));
-        hpPoints.setText(String.valueOf(jogador.getVidaAtual()));
-        hpMax.setText(String.valueOf(jogador.getVidaMax()));
-        xpPoints.setText(String.valueOf(jogador.getxpAtual()));
-        xpNextLvl.setText(String.valueOf(jogador.getxpProxNivel()));
-        valorAtk.setText(String.valueOf(jogador.getAtaque()));
-        valorDef.setText(String.valueOf(jogador.getDefesa()));
-        valorOuro.setText(String.valueOf(jogador.getOuro()));
+        this.jogador.setNome(jogador.getNome());
+        this.jogador.setNivel(jogador.getNivel());
+        this.jogador.setClasse(jogador.getClasse());
+        this.jogador.setRaca(jogador.getRaca());
+        this.jogador.setVidaMax(jogador.getVidaMax());
+        this.jogador.setVidaAtual(jogador.getVidaAtual());
+        this.jogador.setxpProxNivel(jogador.getxpProxNivel());
+        this.jogador.setxpAtual(jogador.getxpAtual());
+        this.jogador.setOuro(jogador.getOuro());
+        this.jogador.setAtaque(jogador.getAtaque());
+        this.jogador.setDefesa(jogador.getDefesa());
     }
 
     @FXML
     private void darOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-
-        valorOuro.setText(String.valueOf(Integer.parseInt(valorOuro.getText()) + popUpController.getValor()));
+        jogador.setOuro(jogador.getOuro() + popUpController.getValor());
     }
 
     @FXML
     private void tirarOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-
-        valorOuro.setText(String.valueOf(Integer.parseInt(valorOuro.getText()) - popUpController.getValor()));
+        jogador.setOuro(jogador.getOuro() - popUpController.getValor());
     }
 
     @FXML
     private void darXp() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-
-        int xpMax = Integer.parseInt(xpNextLvl.getText());
-        int xpAtual = Integer.parseInt(xpPoints.getText());
-        int xpDado = popUpController.getValor();
-
-        if (xpDado + xpAtual >= xpMax) {
-            // Aumenta o nível
-            int nivelAtual = Integer.parseInt(nivelPersonagem.getText().replaceAll("[a-zA-Z]", "").trim());
-            nivelPersonagem.setText("Lvl " + ++nivelAtual);
-
-            // Insere o xp restante para o próximo nível
-            int xpRestante = (xpDado + xpAtual) - xpMax;
-            xpPoints.setText(String.valueOf(xpRestante));
-        } else {
-            xpPoints.setText(String.valueOf(xpAtual + xpDado));
-        }
+        jogador.setxpAtual(jogador.getxpAtual() + popUpController.getValor());
     }
 
     @FXML
     private void aplicarDano() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
 
-        int vidaAtual = Integer.parseInt(hpPoints.getText());
-        int dano = popUpController.getValor();
-
-        if (dano <= vidaAtual)
-            hpPoints.setText(String.valueOf(vidaAtual - dano));
-        else
-            hpPoints.setText(String.valueOf(0));
-
     }
 
     @FXML
     private void aplicarCura() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-
-        int vidaAtual = Integer.parseInt(hpPoints.getText());
-        int cura = popUpController.getValor();
-
-        if (cura >= Integer.parseInt(hpMax.getText()))
-            hpPoints.setText(hpMax.getText());
-        else
-            hpPoints.setText(String.valueOf(vidaAtual + cura));
 
     }
 

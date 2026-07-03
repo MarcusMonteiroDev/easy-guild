@@ -30,6 +30,7 @@ public class App extends Application {
             Party party = mapper.readValue(path, Party.class);
             
             PartyState.setParty(party);
+            
             System.out.println("Party carregada com sucesso");
         } catch (StreamReadException e) {
             System.out.println("JSON mal formatado.");
