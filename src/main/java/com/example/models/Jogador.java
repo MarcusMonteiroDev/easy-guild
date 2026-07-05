@@ -9,38 +9,31 @@ import com.example.enums.Racas;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Jogador {
 
     private final StringProperty nome = new SimpleStringProperty(this, "nome", "Personagem");
-
     private final IntegerProperty nivel = new SimpleIntegerProperty(this, "nivel", 1);
-
     private final StringProperty classe = new SimpleStringProperty(this, "classe", "Classe");
-
     private final StringProperty raca = new SimpleStringProperty(this, "raca", "Raça");
-
     private final IntegerProperty vidaMax = new SimpleIntegerProperty(this, "vidaMax", 100);
-
     private final IntegerProperty vidaAtual = new SimpleIntegerProperty(this, "vidaAtual", 100);
-
     private final BooleanProperty jogadorVivo = new SimpleBooleanProperty(this, "jogadorVivo", true);
-
     private final IntegerProperty xpProxNivel = new SimpleIntegerProperty(this, "xpProxNivel", 100);
-
     private final IntegerProperty xpAtual = new SimpleIntegerProperty(this, "xpAtual", 100);
-
     private final IntegerProperty ouro = new SimpleIntegerProperty(this, "ouro", 0);
-
     private final IntegerProperty ataque = new SimpleIntegerProperty(this, "ataque", 10);
-
     private final IntegerProperty defesa = new SimpleIntegerProperty(this, "defesa", 10);
-
-    // private ArrayList<String> idiomas;
+    private final ListProperty<Idiomas> idiomas = new SimpleListProperty<>(this, "idiomas",
+            FXCollections.observableArrayList());
     // private ArrayList<Equipamento> equipamentos;
 
     // construtor
@@ -202,19 +195,18 @@ public class Jogador {
     public IntegerProperty defesaProperty() {
         return defesa;
     }
-    /*
-     * public String getIdiomas() {
-     * return String.join(", ", idiomas);
-     * }
-     * 
-     * public void setIdiomas(ArrayList<String> idiomas) {
-     * for (String idioma : idiomas) {
-     * if (!verificaExistencia(idioma, Idiomas.class))
-     * throw new IllegalArgumentException("Um dos idiomas informados não existe.");
-     * }
-     * this.idiomas = idiomas;
-     * }
-     */
+
+    public ObservableList<Idiomas> getIdiomas() {
+        return idiomas.get();
+    }
+
+    public void setIdioma(ObservableList<Idiomas> idiomas) {
+        this.idiomas.set(idiomas);
+    }
+
+    public ListProperty<Idiomas> idiomasProperty() {
+        return idiomas;
+    }
 
     // metodos privados
 
@@ -238,7 +230,7 @@ public class Jogador {
             jogadorVivo.set(false);
             System.out.println("O jogador morreu");
         }
-            
+
     }
 
     // metodos publicos

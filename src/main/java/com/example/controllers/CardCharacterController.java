@@ -1,14 +1,19 @@
 package com.example.controllers;
 
 import java.io.IOException;
+
+import com.example.enums.Idiomas;
 import com.example.models.Jogador;
 import javafx.beans.binding.Bindings;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -59,6 +64,9 @@ public class CardCharacterController {
     @FXML
     private Button btnMenosOuro;
 
+    @FXML
+    private FlowPane listaIdiomas;
+
     private Jogador jogador;
 
     @FXML
@@ -76,9 +84,29 @@ public class CardCharacterController {
         valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
         valorDef.textProperty().bind(jogador.defesaProperty().asString());
         valorOuro.textProperty().bind(jogador.ouroProperty().asString());
+        
+        jogador.getIdiomas().addListener((ListChangeListener<Idiomas>) mudanca -> {
+            while(mudanca.next()) {
+                if(mudanca.wasAdded()) {
+                    for (Idiomas idioma : mudanca.getAddedSubList()) {
+                        Label label = new Label(idioma.toString());
+                        listaIdiomas.getChildren().add(label);
+                    }
+                }
+            }
+
+            if(mudanca.wasRemoved())
+                recarregarIdiomas();
+        });
 
         System.out.println("Card de personagem criado");
 
+    }
+
+    private void recarregarIdiomas() {
+        listaIdiomas.getChildren().clear();
+        for(Idiomas idioma : jogador.getIdiomas())
+            listaIdiomas.getChildren().add(new Label(idioma.toString()));
     }
 
     public void criarPersonagem(Jogador jogador) {
@@ -94,6 +122,8 @@ public class CardCharacterController {
         this.jogador.setAtaque(jogador.getAtaque());
         this.jogador.setDefesa(jogador.getDefesa());
     }
+
+
 
     @FXML
     private void darOuro() throws IOException {
