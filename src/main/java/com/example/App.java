@@ -45,8 +45,8 @@ public class App extends Application {
         
         scene = new Scene(loadFXML("CharacterScreem"));
 
-        //stage.setMinWidth(100);
-        //stage.setMinHeight(100);
+        stage.setMinWidth(600);
+        stage.setMinHeight(800);
 
         stage.setTitle("Easy Guild");
         stage.setScene(scene);

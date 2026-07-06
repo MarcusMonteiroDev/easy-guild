@@ -7,16 +7,11 @@
       "raca": "ANAO",
       "vidaMax": 100,
       "vidaAtual": 92,
-      "jogadorVivo": true,
       "xpProxNivel": 250,
       "xpAtual": 180,
       "ouro": 320,
       "ataque": 22,
-      "defesa": 18,
-      "idiomas": [
-        "COMUM",
-        "ANAO"
-      ]
+      "defesa": 18
     },
     {
       "nome": "Lyra",
@@ -25,17 +20,11 @@
       "raca": "ELFO",
       "vidaMax": 75,
       "vidaAtual": 68,
-      "jogadorVivo": true,
       "xpProxNivel": 220,
       "xpAtual": 140,
       "ouro": 95,
       "ataque": 28,
-      "defesa": 8,
-      "idiomas": [
-        "COMUM",
-        "ELFICO",
-        "DRACONICO"
-      ]
+      "defesa": 8
     },
     {
       "nome": "Kael",
@@ -44,16 +33,11 @@
       "raca": "HUMANO",
       "vidaMax": 85,
       "vidaAtual": 71,
-      "jogadorVivo": true,
       "xpProxNivel": 180,
       "xpAtual": 95,
       "ouro": 140,
       "ataque": 19,
-      "defesa": 11,
-      "idiomas": [
-        "COMUM",
-        "ELFICO"
-      ]
+      "defesa": 11
     },
     {
       "nome": "Morgana",
@@ -62,15 +46,11 @@
       "raca": "HUMANO",
       "vidaMax": 90,
       "vidaAtual": 90,
-      "jogadorVivo": true,
       "xpProxNivel": 320,
       "xpAtual": 275,
       "ouro": 210,
       "ataque": 16,
-      "defesa": 14,
-      "idiomas": [
-        "COMUM"
-      ]
+      "defesa": 14
     },
     {
       "nome": "Zarek",
@@ -79,52 +59,11 @@
       "raca": "ORC",
       "vidaMax": 95,
       "vidaAtual": 60,
-      "jogadorVivo": true,
       "xpProxNivel": 400,
       "xpAtual": 350,
       "ouro": 480,
       "ataque": 30,
-      "defesa": 10,
-      "idiomas": [
-        "COMUM",
-        "ORC"
-      ]
-    },
-    {
-      "nome": "Elara",
-      "nivel": 5,
-      "classe": "LADINO",
-      "raca": "HALFLING",
-      "vidaMax": 45,
-      "vidaAtual": 45,
-      "jogadorVivo": true,
-      "xpProxNivel": 120,
-      "xpAtual": 110,
-      "ouro": 850,
-      "ataque": 15,
-      "defesa": 12,
-      "idiomas": [
-        "COMUM",
-        "HALFLING"
-      ]
-    },
-    {
-      "nome": "Grommash",
-      "nivel": 8,
-      "classe": "BARBARO",
-      "raca": "ORC",
-      "vidaMax": 110,
-      "vidaAtual": 0,
-      "jogadorVivo": false,
-      "xpProxNivel": 180,
-      "xpAtual": 20,
-      "ouro": 15,
-      "ataque": 25,
-      "defesa": 12,
-      "idiomas": [
-        "COMUM",
-        "ORC"
-      ]
+      "defesa": 10
     }
   ]
 }
