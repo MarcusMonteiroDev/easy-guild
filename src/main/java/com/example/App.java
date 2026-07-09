@@ -2,7 +2,6 @@ package com.example;
 
 import java.io.IOException;
 import java.io.InputStream;
-import com.example.models.Party;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;

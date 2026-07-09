@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import java.io.IOException;
 
+import com.example.PartyState;
 import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
 import com.example.models.Jogador;
@@ -76,28 +77,11 @@ public class CardCharacterController {
     @FXML
     private VBox listaEquipamentos;
 
-    private Jogador jogador = new Jogador();
+    private Jogador jogador;
 
     @FXML
     public void initialize() {
-        nomePersonagem.textProperty().bind(jogador.nomProperty());
-        classeRaca.textProperty().bind(Bindings.format("%s - %s", jogador.racaProperty(), jogador.classeProperty()));
-        nivelPersonagem.textProperty().bind(Bindings.concat("Lvl ", jogador.nivelProperty()));
-        hpPoints.textProperty().bind(jogador.vidaAtualProperty().asString());
-        hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
-        xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
-        xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
-        valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
-        valorDef.textProperty().bind(jogador.defesaProperty().asString());
-        valorOuro.textProperty().bind(jogador.ouroProperty().asString());
-        jogador.getIdiomas().addListener((ListChangeListener<Idiomas>) change -> {
-            atualizarIdiomas();
-        });
-        jogador.getEquipamentos().addListener((ListChangeListener<Equipamentos>) change -> {
-            atualizarEquipamentos();
-        });        
-
-        System.out.println("Card de personagem criado");
+        
 
     }
 
@@ -136,6 +120,28 @@ public class CardCharacterController {
     }
 
     public void criarPersonagem(Jogador jogador) {
+        this.jogador = jogador;
+
+        nomePersonagem.textProperty().bind(jogador.nomProperty());
+        classeRaca.textProperty().bind(Bindings.format("%s - %s", jogador.racaProperty(), jogador.classeProperty()));
+        nivelPersonagem.textProperty().bind(Bindings.concat("Lvl ", jogador.nivelProperty()));
+        hpPoints.textProperty().bind(jogador.vidaAtualProperty().asString());
+        hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
+        xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
+        xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
+        valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
+        valorDef.textProperty().bind(jogador.defesaProperty().asString());
+        valorOuro.textProperty().bind(jogador.ouroProperty().asString());
+        jogador.getIdiomas().addListener((ListChangeListener<Idiomas>) change -> {
+            atualizarIdiomas();
+        });
+        jogador.getEquipamentos().addListener((ListChangeListener<Equipamentos>) change -> {
+            atualizarEquipamentos();
+        });        
+
+        System.out.println("Card de personagem criado");
+        System.out.println("ID -> " + jogador.getID());
+
         this.jogador.setNome(jogador.getNome());
         this.jogador.setNivel(jogador.getNivel());
         this.jogador.setClasse(jogador.getClasse());
@@ -152,7 +158,8 @@ public class CardCharacterController {
     }
     @FXML
     private void excluirJogador() {
-
+        PartyState.deletePlayer(jogador.getID());
+        System.out.println("Jogador Excluido");
     }
 
     @FXML

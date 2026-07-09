@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import com.example.enums.Classes;
 import com.example.enums.Equipamentos;
@@ -23,7 +24,7 @@ import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
 public class Jogador {
-    private final int ID = 0;
+    private final String ID = UUID.randomUUID().toString();
 
     private final StringProperty nome = new SimpleStringProperty(this, "nome", "Personagem");
     private final IntegerProperty nivel = new SimpleIntegerProperty(this, "nivel", 1);
@@ -47,14 +48,13 @@ public class Jogador {
         this.vidaAtual.addListener((observable, valorAntigo, valorNovo) -> {
             atualizarEstadoJogador(valorNovo.intValue());
         });
-
-        // Atribui um ID ao jogador
-        long seed = LocalDateTime.now().atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli();
-        System.out.println(seed);
-
     }
 
     // getters e setters
+    public String getID() {
+        return ID;
+    }
+
     public String getNome() {
         return nome.get();
     }
@@ -260,6 +260,7 @@ public class Jogador {
     @Override
     public String toString() {
         return """
+                ID: %s
                 Nome: %s
                 Nível: %d
                 Classe: %s
@@ -270,6 +271,7 @@ public class Jogador {
                 Ataque: %d
                 Defesa: %d
                 """.formatted(
+                getID(),
                 getNome(),
                 getNivel(),
                 getClasse(),

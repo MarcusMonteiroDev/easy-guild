@@ -15,7 +15,7 @@ public class CharacterScreemController {
 
     @FXML
     public void initialize() {
-        for (Jogador jogador : PartyState.getParty().getJogadores()) {
+        for (Jogador jogador : PartyState.getParty()) {
             VBox novoCard = criarCard(jogador);
             galeriaAventureiros.getChildren().add(novoCard);
         }

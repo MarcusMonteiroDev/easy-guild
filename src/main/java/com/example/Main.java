@@ -3,7 +3,6 @@ package com.example;
 import java.io.File;
 
 import com.example.models.Jogador;
-import com.example.models.Party;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Main {
@@ -27,15 +26,6 @@ public class Main {
 
         ObjectMapper mapper = new ObjectMapper();
         try {
-            Party party = mapper.readValue(new File("src/main/resources/com/example/save/dados.json"),
-                    Party.class);
-
-            int j = 1;
-            for (Jogador jog : party.getJogadores()) {
-                System.out.println("Jogador " + j);
-                j++;
-                System.out.println(jog);
-            }
 
         } catch (Exception e) {
             System.out.println("erro:");
