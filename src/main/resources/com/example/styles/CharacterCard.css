@@ -1,6 +1,6 @@
 * {
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+
 }
 
 .label {
@@ -83,9 +83,7 @@
     -fx-font-weight: bold;
 }
 
-#hpPoints {
-
-}
+#hpPoints {}
 
 /* Atributos */
 
@@ -116,6 +114,10 @@
     -fx-font-weight: bolder;
 }
 
+#listaEquipamentos, #scrollItems {
+    -fx-background-color: #172032;
+}
+
 .botaoAdd {
     -fx-background-color: transparent;
     -fx-border-width: 1px;
@@ -128,6 +130,7 @@
     -fx-font-size: 10px;
 }
 
+/* Idiomas */
 #labelIdiomas {
     -fx-text-fill: #6a7b82;
     -fx-font-size: 16px;

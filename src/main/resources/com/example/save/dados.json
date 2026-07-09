@@ -11,7 +11,9 @@
       "xpAtual": 180,
       "ouro": 320,
       "ataque": 22,
-      "defesa": 18
+      "defesa": 18,
+      "idiomas": ["COMUM", "ANAO"],
+      "equipamentos": ["MACHADO", "ESPADA", "ARCO"]
     },
     {
       "nome": "Lyra",
@@ -24,7 +26,9 @@
       "xpAtual": 140,
       "ouro": 95,
       "ataque": 28,
-      "defesa": 8
+      "defesa": 8,
+      "idiomas": ["COMUM", "ELFICO", "DRACONICO"],
+      "equipamentos": ["CAJADO", "ARCO", "ESPADA"]
     },
     {
       "nome": "Kael",
@@ -37,7 +41,9 @@
       "xpAtual": 95,
       "ouro": 140,
       "ataque": 19,
-      "defesa": 11
+      "defesa": 11,
+      "idiomas": ["COMUM"],
+      "equipamentos": ["ARCO", "ESPADA", "MACHADO"]
     },
     {
       "nome": "Morgana",
@@ -50,7 +56,9 @@
       "xpAtual": 275,
       "ouro": 210,
       "ataque": 16,
-      "defesa": 14
+      "defesa": 14,
+      "idiomas": ["COMUM", "DRACONICO"],
+      "equipamentos": ["CAJADO", "ESPADA", "ARCO"]
     },
     {
       "nome": "Zarek",
@@ -63,7 +71,9 @@
       "xpAtual": 350,
       "ouro": 480,
       "ataque": 30,
-      "defesa": 10
+      "defesa": 10,
+      "idiomas": ["COMUM", "ORC"],
+      "equipamentos": ["MACHADO", "ESPADA", "ARCO"]
     }
   ]
 }

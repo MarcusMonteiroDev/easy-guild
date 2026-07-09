@@ -1,14 +1,22 @@
 package com.example.controllers;
 
 import java.io.IOException;
+
+import com.example.enums.Equipamentos;
+import com.example.enums.Idiomas;
 import com.example.models.Jogador;
 import javafx.beans.binding.Bindings;
+import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -59,13 +67,19 @@ public class CardCharacterController {
     @FXML
     private Button btnMenosOuro;
 
-    private Jogador jogador;
+    @FXML
+    private Button addItem;
+
+    @FXML
+    private FlowPane flowPaneIdiomas;
+
+    @FXML
+    private VBox listaEquipamentos;
+
+    private Jogador jogador = new Jogador();
 
     @FXML
     public void initialize() {
-
-        this.jogador = new Jogador();
-
         nomePersonagem.textProperty().bind(jogador.nomProperty());
         classeRaca.textProperty().bind(Bindings.format("%s - %s", jogador.racaProperty(), jogador.classeProperty()));
         nivelPersonagem.textProperty().bind(Bindings.concat("Lvl ", jogador.nivelProperty()));
@@ -76,9 +90,49 @@ public class CardCharacterController {
         valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
         valorDef.textProperty().bind(jogador.defesaProperty().asString());
         valorOuro.textProperty().bind(jogador.ouroProperty().asString());
+        jogador.getIdiomas().addListener((ListChangeListener<Idiomas>) change -> {
+            atualizarIdiomas();
+        });
+        jogador.getEquipamentos().addListener((ListChangeListener<Equipamentos>) change -> {
+            atualizarEquipamentos();
+        });        
 
         System.out.println("Card de personagem criado");
 
+    }
+
+    private void atualizarIdiomas() {
+        flowPaneIdiomas.getChildren().clear();
+
+        for (Idiomas idioma : jogador.getIdiomas()) {
+            Label label = new Label(idioma.name());
+            flowPaneIdiomas.getChildren().add(label);
+        }
+    }
+
+    private void atualizarEquipamentos() {
+        listaEquipamentos.getChildren().clear();
+
+        for (Equipamentos equipamento : jogador.getEquipamentos()) {
+            HBox novoItem = criarItem(equipamento);
+            listaEquipamentos.getChildren().add(novoItem);
+        }
+    }
+
+    private HBox criarItem(Equipamentos equipamento) {
+        try {
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/ItemTemplate.fxml"));
+            //HBox card = loader.load();
+
+            //ItemTemplateController itemController = loader.getController();
+            //itemController.criarEquipamento(equipamento);
+
+            //return card;
+            return new HBox();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new HBox();
+        }
     }
 
     public void criarPersonagem(Jogador jogador) {
@@ -93,6 +147,12 @@ public class CardCharacterController {
         this.jogador.setOuro(jogador.getOuro());
         this.jogador.setAtaque(jogador.getAtaque());
         this.jogador.setDefesa(jogador.getDefesa());
+        this.jogador.setIdiomas(jogador.getIdiomas());
+        this.jogador.setEquipamentos(jogador.getEquipamentos());
+    }
+    @FXML
+    private void excluirJogador() {
+
     }
 
     @FXML

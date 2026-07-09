@@ -1,6 +1,9 @@
 package com.example.models;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.example.enums.Classes;
 import com.example.enums.Equipamentos;
@@ -9,45 +12,46 @@ import com.example.enums.Racas;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.ListProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 
 public class Jogador {
+    private final int ID = 0;
 
     private final StringProperty nome = new SimpleStringProperty(this, "nome", "Personagem");
-
     private final IntegerProperty nivel = new SimpleIntegerProperty(this, "nivel", 1);
-
     private final StringProperty classe = new SimpleStringProperty(this, "classe", "Classe");
-
     private final StringProperty raca = new SimpleStringProperty(this, "raca", "Raça");
-
     private final IntegerProperty vidaMax = new SimpleIntegerProperty(this, "vidaMax", 100);
-
     private final IntegerProperty vidaAtual = new SimpleIntegerProperty(this, "vidaAtual", 100);
-
     private final BooleanProperty jogadorVivo = new SimpleBooleanProperty(this, "jogadorVivo", true);
-
     private final IntegerProperty xpProxNivel = new SimpleIntegerProperty(this, "xpProxNivel", 100);
-
     private final IntegerProperty xpAtual = new SimpleIntegerProperty(this, "xpAtual", 100);
-
     private final IntegerProperty ouro = new SimpleIntegerProperty(this, "ouro", 0);
-
     private final IntegerProperty ataque = new SimpleIntegerProperty(this, "ataque", 10);
-
     private final IntegerProperty defesa = new SimpleIntegerProperty(this, "defesa", 10);
-
-    // private ArrayList<String> idiomas;
-    // private ArrayList<Equipamento> equipamentos;
+    private final ListProperty<Idiomas> idiomas = new SimpleListProperty<>(this, "idiomas",
+            FXCollections.observableArrayList());
+    private final ListProperty<Equipamentos> equipamentos = new SimpleListProperty<>(this, "equipamentos",
+            FXCollections.observableArrayList());
 
     // construtor
     public Jogador() {
         this.vidaAtual.addListener((observable, valorAntigo, valorNovo) -> {
             atualizarEstadoJogador(valorNovo.intValue());
         });
+
+        // Atribui um ID ao jogador
+        long seed = LocalDateTime.now().atZone(java.time.ZoneId.systemDefault()).toInstant().toEpochMilli();
+        System.out.println(seed);
+
     }
 
     // getters e setters
@@ -202,19 +206,30 @@ public class Jogador {
     public IntegerProperty defesaProperty() {
         return defesa;
     }
-    /*
-     * public String getIdiomas() {
-     * return String.join(", ", idiomas);
-     * }
-     * 
-     * public void setIdiomas(ArrayList<String> idiomas) {
-     * for (String idioma : idiomas) {
-     * if (!verificaExistencia(idioma, Idiomas.class))
-     * throw new IllegalArgumentException("Um dos idiomas informados não existe.");
-     * }
-     * this.idiomas = idiomas;
-     * }
-     */
+
+    public ObservableList<Idiomas> getIdiomas() {
+        return idiomas.get();
+    }
+
+    public void setIdiomas(List<Idiomas> idiomas) {
+        this.idiomas.setAll(idiomas);
+    }
+
+    public ListProperty<Idiomas> idiomasProperty() {
+        return idiomas;
+    }
+
+    public ObservableList<Equipamentos> getEquipamentos() {
+        return equipamentos.get();
+    }
+
+    public void setEquipamentos(List<Equipamentos> equipamentos) {
+        this.equipamentos.setAll(equipamentos);
+    }
+
+    public ListProperty<Equipamentos> equipamentosProperty() {
+        return equipamentos;
+    }
 
     // metodos privados
 
@@ -238,7 +253,7 @@ public class Jogador {
             jogadorVivo.set(false);
             System.out.println("O jogador morreu");
         }
-            
+
     }
 
     // metodos publicos
@@ -255,16 +270,16 @@ public class Jogador {
                 Ataque: %d
                 Defesa: %d
                 """.formatted(
-                nome,
-                nivel,
-                classe,
-                raca,
-                vidaAtual,
-                vidaMax,
-                xpAtual,
-                xpProxNivel,
-                ouro,
-                ataque,
-                defesa);
+                getNome(),
+                getNivel(),
+                getClasse(),
+                getRaca(),
+                getVidaAtual(),
+                getVidaMax(),
+                getxpAtual(),
+                getxpProxNivel(),
+                getOuro(),
+                getAtaque(),
+                getDefesa());
     }
 }

@@ -2,21 +2,11 @@
 
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 
 
-<VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="76.0" prefWidth="513.0" stylesheets="@../styles/ItemTemplate.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="280.0" spacing="15.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.ItemTemplateController">
    <children>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label fx:id="nomeItem" text="Nome do Item" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" VBox.vgrow="ALWAYS">
-         <children>
-            <Label fx:id="descricaoItem" text="Descrição" />
-            <Label fx:id="atributoItem" layoutX="10.0" layoutY="10.0" text="Atributo" />
-         </children>
-      </HBox>
+      <Label fx:id="nomeItem" text="Nome do Item" />
+      <Label fx:id="danoItem" text="Dano do Item" />
    </children>
-</VBox>
+</HBox>

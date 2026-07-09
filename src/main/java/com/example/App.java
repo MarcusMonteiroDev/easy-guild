@@ -21,32 +21,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        try {
-            // Carrega a party
-            ObjectMapper mapper = new ObjectMapper();
 
-            InputStream path = getClass().getResourceAsStream("/com/example/save/dados.json");
+        PartyState.carregaParty();
 
-            Party party = mapper.readValue(path, Party.class);
-            
-            PartyState.setParty(party);
-            
-            System.out.println("Party carregada com sucesso");
-        } catch (StreamReadException e) {
-            System.out.println("JSON mal formatado.");
-        } catch (DatabindException e) {
-            System.out.println("JSON não corresponde à estrutura da classe.");
-        } catch (IOException e) {
-            System.out.println("Erro de leitura do arquivo.");
-        } catch(Exception e) {
-            System.out.println("Erro inesperado ao carregar a party");
-            e.printStackTrace();
-        }
-        
+        //scene = new Scene(loadFXML("NewPlayerScreem"));
         scene = new Scene(loadFXML("CharacterScreem"));
+        
 
-        stage.setMinWidth(600);
-        stage.setMinHeight(800);
+        // stage.setMinWidth(600);
+        // stage.setMinHeight(800);
 
         stage.setTitle("Easy Guild");
         stage.setScene(scene);
