@@ -90,6 +90,7 @@ public class CardCharacterController {
 
         for (Idiomas idioma : jogador.getIdiomas()) {
             Label label = new Label(idioma.name());
+            label.getStyleClass().add("labelIdioma");
             flowPaneIdiomas.getChildren().add(label);
         }
     }
@@ -105,14 +106,13 @@ public class CardCharacterController {
 
     private HBox criarItem(Equipamentos equipamento) {
         try {
-            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/ItemTemplate.fxml"));
-            //HBox card = loader.load();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/ItemTemplate.fxml"));
+            HBox card = loader.load();
 
-            //ItemTemplateController itemController = loader.getController();
-            //itemController.criarEquipamento(equipamento);
+            ItemTemplateController itemController = loader.getController();
+            itemController.criarEquipamento(equipamento);
 
-            //return card;
-            return new HBox();
+            return card;
         } catch (Exception e) {
             e.printStackTrace();
             return new HBox();
@@ -137,29 +137,16 @@ public class CardCharacterController {
         });
         jogador.getEquipamentos().addListener((ListChangeListener<Equipamentos>) change -> {
             atualizarEquipamentos();
-        });        
+        });
 
-        System.out.println("Card de personagem criado");
-        System.out.println("ID -> " + jogador.getID());
+        // Atualiza o card imediatamente com o conteúdo já presente nas listas
+        atualizarIdiomas();
+        atualizarEquipamentos();
 
-        this.jogador.setNome(jogador.getNome());
-        this.jogador.setNivel(jogador.getNivel());
-        this.jogador.setClasse(jogador.getClasse());
-        this.jogador.setRaca(jogador.getRaca());
-        this.jogador.setVidaMax(jogador.getVidaMax());
-        this.jogador.setVidaAtual(jogador.getVidaAtual());
-        this.jogador.setxpProxNivel(jogador.getxpProxNivel());
-        this.jogador.setxpAtual(jogador.getxpAtual());
-        this.jogador.setOuro(jogador.getOuro());
-        this.jogador.setAtaque(jogador.getAtaque());
-        this.jogador.setDefesa(jogador.getDefesa());
-        this.jogador.setIdiomas(jogador.getIdiomas());
-        this.jogador.setEquipamentos(jogador.getEquipamentos());
     }
     @FXML
     private void excluirJogador() {
         PartyState.deletePlayer(jogador.getID());
-        System.out.println("Jogador Excluido");
     }
 
     @FXML

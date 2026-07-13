@@ -253,6 +253,11 @@
                <graphic>
                   <VBox alignment="CENTER" spacing="2.0">
                      <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/sword-red.png" />
+                           </image>
+                        </ImageView>
                         <Label text="Dano" />
                      </children>
                   </VBox>
@@ -265,6 +270,11 @@
                <graphic>
                   <VBox alignment="CENTER" spacing="2.0">
                      <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/heart-green.png" />
+                           </image>
+                        </ImageView>
                         <Label text="Cura" />
                      </children>
                   </VBox>
@@ -277,6 +287,11 @@
                <graphic>
                   <VBox alignment="CENTER">
                      <children>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/satr-purple.png" />
+                           </image>
+                        </ImageView>
                         <Label text="+XP" />
                      </children>
                   </VBox>
@@ -289,6 +304,11 @@
                <graphic>
                   <VBox alignment="CENTER" spacing="2.0">
                      <children>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/plus.png" />
+                           </image>
+                        </ImageView>
                         <Label text="+Ouro" />
                      </children>
                   </VBox>
@@ -301,6 +321,11 @@
                <graphic>
                   <VBox alignment="CENTER">
                      <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/minus.png" />
+                           </image>
+                        </ImageView>
                         <Label text="-Ouro" />
                      </children>
                   </VBox>
