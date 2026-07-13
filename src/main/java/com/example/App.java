@@ -1,10 +1,6 @@
 package com.example;
 
 import java.io.IOException;
-import java.io.InputStream;
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +21,6 @@ public class App extends Application {
 
         //scene = new Scene(loadFXML("NewPlayerScreem"));
         scene = new Scene(loadFXML("CharacterScreem"));
-        
 
         // stage.setMinWidth(600);
         // stage.setMinHeight(800);

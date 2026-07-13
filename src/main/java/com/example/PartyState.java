@@ -8,9 +8,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import com.example.models.Jogador;
-import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 // Monitora o estado da Party
@@ -35,11 +33,10 @@ public final class PartyState {
     public static void addPlayser(Jogador jogador) {
         party.add(jogador);
         System.out.println("Jogador Adicionado:\n" + jogador.toString());
+        
     }
 
-    public static void deletePlayer(String ID) {
-        // ESTE MÉTODO NÃO FUNCIONA POR CONTA DA DUPLICAÇÃO DE OBJETOS JOGADOR NA MEMÓRIA
-        // O ID RECEBIDO (QUE VEM DO CARD) É DIFERENTE DO ID DO JOGADOR ARMAZENADO NO PARTYSTATE
+    public static void deletePlayer(String ID) throws IOException {
         System.out.println("ID procurado -> " + ID);
         System.out.println("LISTA ANTES:");
         System.out.println(mostrarParty());
@@ -48,6 +45,8 @@ public final class PartyState {
 
         System.out.println("LISTA DEPOIS:");
         System.out.println(mostrarParty());
+
+        salvarParty();
     }
 
     public static void carregaParty() throws IOException {

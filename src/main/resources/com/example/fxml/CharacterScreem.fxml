@@ -35,7 +35,7 @@
                   </HBox>
                   <HBox alignment="CENTER_RIGHT" prefHeight="298.0" prefWidth="295.0" GridPane.columnIndex="1">
                      <children>
-                        <Button fx:id="btnNovoJogador" mnemonicParsing="false" text="Novo Jogador" />
+                        <Button fx:id="btnNovoJogador" mnemonicParsing="false" onAction="#newPlayer" text="Novo Jogador" />
                      </children>
                      <padding>
                         <Insets right="20.0" />

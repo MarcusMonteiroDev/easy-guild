@@ -13,11 +13,13 @@ import com.example.enums.Racas;
 import com.example.models.Jogador;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.Stage;
 
 public class NewPlayerController {
     @FXML
@@ -90,41 +92,60 @@ public class NewPlayerController {
 
     @FXML
     public void addToParty() {
-        Jogador jogador = new Jogador();
-
-        jogador.setNome(nome.getText());
-        jogador.setNivel(1);
-        jogador.setClasse(classe.getValue().toString());
-        jogador.setRaca(raca.getValue().toString());
-        jogador.setVidaMax(Integer.parseInt(hp.getText()));
-        jogador.setVidaAtual(Integer.parseInt(hp.getText()));
-        jogador.setxpProxNivel(100);
-        jogador.setxpAtual(0);
-        jogador.setOuro(Integer.parseInt(ouro.getText()));
-        jogador.setAtaque(Integer.parseInt(ataque.getText()));
-        jogador.setDefesa(Integer.parseInt(defesa.getText()));
-
-        // Verifica os idiomas e equipamentos selecionados
-        for (ToggleButton idiomaSelecionado : this.idiomas) {
-            if (idiomaSelecionado.isSelected()) {
-                jogador.getIdiomas().add(Idiomas.valueOf(idiomaSelecionado.getText().toUpperCase()));
-            }
-        }
-
-        for (ToggleButton equipamentoSelecionado : this.equipamentos) {
-            if (equipamentoSelecionado.isSelected()) {
-                jogador.getEquipamentos().add(Equipamentos.valueOf(equipamentoSelecionado.getText().toUpperCase()));
-            }
-        }
-
         try {
-            PartyState.addPlayser(jogador);
-            PartyState.salvarParty();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+            Jogador jogador = new Jogador();
 
+            jogador.setNome(nome.getText());
+            jogador.setNivel(1);
+            jogador.setClasse(classe.getValue().toString());
+            jogador.setRaca(raca.getValue().toString());
+            jogador.setVidaMax(Integer.parseInt(hp.getText()));
+            jogador.setVidaAtual(Integer.parseInt(hp.getText()));
+            jogador.setxpProxNivel(100);
+            jogador.setxpAtual(0);
+            jogador.setOuro(Integer.parseInt(ouro.getText()));
+            jogador.setAtaque(Integer.parseInt(ataque.getText()));
+            jogador.setDefesa(Integer.parseInt(defesa.getText()));
+
+            // Verifica os idiomas e equipamentos selecionados
+            for (ToggleButton idiomaSelecionado : this.idiomas) {
+                if (idiomaSelecionado.isSelected()) {
+                    jogador.getIdiomas().add(Idiomas.valueOf(idiomaSelecionado.getText().toUpperCase()));
+                }
+            }
+
+            for (ToggleButton equipamentoSelecionado : this.equipamentos) {
+                if (equipamentoSelecionado.isSelected()) {
+                    jogador.getEquipamentos().add(Equipamentos.valueOf(equipamentoSelecionado.getText().toUpperCase()));
+                }
+            }
+
+            try {
+                PartyState.addPlayser(jogador);
+                PartyState.salvarParty();
+
+                CharacterScreemController.getInstance().adicionarJogador(jogador);
+
+                Stage stage = (Stage) nome.getScene().getWindow();
+                stage.close();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        } catch (Exception e) {
+            System.out.println("Preencha os dados corretamente!");
+            alertaErro();
+        }
+    }
+
+    public void alertaErro() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível cadastrar o personagem");
+        alert.setContentText("Preencha todos os campos corretamente");
+
+        alert.showAndWait();
     }
 
 }

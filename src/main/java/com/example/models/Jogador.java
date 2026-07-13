@@ -1,8 +1,5 @@
 package com.example.models;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -10,6 +7,8 @@ import com.example.enums.Classes;
 import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
 import com.example.enums.Racas;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.IntegerProperty;
@@ -20,9 +19,9 @@ import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Jogador {
     private final String ID = UUID.randomUUID().toString();
 
@@ -51,6 +50,7 @@ public class Jogador {
     }
 
     // getters e setters
+    @JsonIgnore
     public String getID() {
         return ID;
     }

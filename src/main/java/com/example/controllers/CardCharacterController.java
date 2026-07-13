@@ -14,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,6 +21,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CardCharacterController {
+
+    @FXML
+    private VBox mainVBox;
 
     @FXML
     private Label nomePersonagem;
@@ -139,14 +141,15 @@ public class CardCharacterController {
             atualizarEquipamentos();
         });
 
-        // Atualiza o card imediatamente com o conteúdo já presente nas listas
         atualizarIdiomas();
         atualizarEquipamentos();
 
     }
     @FXML
-    private void excluirJogador() {
+    private void excluirJogador() throws IOException {
         PartyState.deletePlayer(jogador.getID());
+        FlowPane pai = (FlowPane) mainVBox.getParent();
+        pai.getChildren().remove(mainVBox);
     }
 
     @FXML
