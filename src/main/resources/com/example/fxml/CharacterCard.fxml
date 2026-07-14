@@ -21,7 +21,7 @@
          <children>
 
             <!-- HEADER -->
-      <HBox fx:id="hBox_1" spacing="10" VBox.vgrow="ALWAYS">
+      <HBox fx:id="hBox_1" alignment="CENTER" spacing="10" VBox.vgrow="ALWAYS">
          <children>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
                <children>
@@ -54,6 +54,7 @@
                   </HBox>
                </children>
             </VBox>
+            <Label fx:id="labelMorto" text="Morto" />
 
                   <Button fx:id="btnExcluir" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" onAction="#excluirJogador" prefHeight="40.0" prefWidth="40.0" textFill="#fff9f9" HBox.hgrow="ALWAYS">
                <graphic>
@@ -96,7 +97,7 @@
                </children>
             </HBox>
 
-                        <ProgressBar progress="0.0" VBox.vgrow="ALWAYS">
+                        <ProgressBar fx:id="barraHp" progress="0.0" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets />
                </VBox.margin>

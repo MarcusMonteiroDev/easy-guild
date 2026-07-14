@@ -7,7 +7,6 @@ import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
 import com.example.models.Jogador;
 import javafx.beans.binding.Bindings;
-import javafx.beans.binding.DoubleBinding;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,10 +36,16 @@ public class CardCharacterController {
     private Label classeRaca;
 
     @FXML
+    private Label labelMorto;
+
+    @FXML
     private Label hpPoints;
 
     @FXML
     private Label hpMax;
+
+    @FXML
+    private ProgressBar barraHp;
 
     @FXML
     private Label xpPoints;
@@ -125,11 +130,35 @@ public class CardCharacterController {
     public void criarPersonagem(Jogador jogador) {
         this.jogador = jogador;
 
+        if (jogador.getJogadorVivo()) {
+            labelMorto.setVisible(false);
+            labelMorto.setManaged(false);
+        } else {
+            labelMorto.setVisible(true);
+            labelMorto.setManaged(true);
+        }
+
+        jogador.jogadorVivoProperty().addListener(
+                (observable, vivoAntes, vivoAgora) -> {
+                    if (!vivoAgora) {
+                        labelMorto.setVisible(true);
+                        labelMorto.setManaged(true);
+                    } else {
+                        labelMorto.setVisible(false);
+                        labelMorto.setManaged(false);
+                    }
+                });
+
         nomePersonagem.textProperty().bind(jogador.nomProperty());
         classeRaca.textProperty().bind(Bindings.format("%s - %s", jogador.racaProperty(), jogador.classeProperty()));
         nivelPersonagem.textProperty().bind(Bindings.concat("Lvl ", jogador.nivelProperty()));
         hpPoints.textProperty().bind(jogador.vidaAtualProperty().asString());
         hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
+        barraHp.progressProperty().bind(
+            Bindings.when(jogador.vidaMaxProperty().isEqualTo(0))
+                .then(0.0)
+                .otherwise(jogador.vidaAtualProperty().multiply(1.0).divide(jogador.vidaMaxProperty()))
+        );
         xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
         xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
         barraXp.progressProperty().bind(jogador.xpAtualProperty().divide(100.0));
@@ -192,13 +221,34 @@ public class CardCharacterController {
     @FXML
     private void aplicarDano() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
+        int dano = popUpController.getValor();
 
+        if (jogador.getVidaAtual() - dano <= 0) {
+            jogador.setVidaAtual(0);
+            jogador.setJogadorVivo(false);
+        } else {
+            jogador.setVidaAtual(jogador.getVidaAtual() - dano);
+        }
+
+        PartyState.salvarParty();
     }
 
     @FXML
     private void aplicarCura() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
+        int cura = popUpController.getValor();
 
+        if (cura + jogador.getVidaAtual() >= jogador.getVidaMax())
+            jogador.setVidaAtual(jogador.getVidaMax());
+        else
+            jogador.setVidaAtual(jogador.getVidaAtual() + cura);
+
+        System.out.println("Cura aplicada");
+
+        jogador.setJogadorVivo(true);
+        System.out.println("Estado jogador -> " + jogador.getJogadorVivo());
+
+        PartyState.salvarParty();
     }
 
     private QuantidadePopUpController abrirPopUp() throws IOException {
