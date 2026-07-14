@@ -26,8 +26,8 @@
                <children>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
-                        <Button fx:id="btnDividirXp" mnemonicParsing="false" text="Dividir XP" />
-                        <Button fx:id="btnDividirOuro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Dividir Ouro" />
+                        <Button fx:id="btnDividirXp" mnemonicParsing="false" onAction="#dividirXp" text="Dividir XP" />
+                        <Button fx:id="btnDividirOuro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#dividirOuro" text="Dividir Ouro" />
                      </children>
                      <GridPane.margin>
                         <Insets left="10.0" />

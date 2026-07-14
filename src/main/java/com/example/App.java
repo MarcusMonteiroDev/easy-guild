@@ -7,9 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -19,15 +16,10 @@ public class App extends Application {
 
         PartyState.carregaParty();
 
-        // scene = new Scene(loadFXML("NewPlayerScreem"));
         scene = new Scene(loadFXML("CharacterScreem"));
-
-        // stage.setMinWidth(600);
-        // stage.setMinHeight(800);
 
         stage.setTitle("Easy Guild");
         stage.setScene(scene);
-
         stage.show();
     }
 
@@ -48,5 +40,4 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
 }

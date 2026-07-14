@@ -19,7 +19,6 @@ public final class PartyState {
     private static final Path DATA_DIR = Paths.get(System.getProperty("user.home"), ".easyguild");
     private static final Path DATA_FILE = DATA_DIR.resolve("dados.json");
 
-    // private static Party party;
     private static ArrayList<Jogador> party = new ArrayList<>();
 
     public static ArrayList<Jogador> getParty() {
@@ -60,22 +59,7 @@ public final class PartyState {
 
         Files.createDirectories(DATA_DIR);
 
-        // TRECHO TEMPORÁRIO
-        // Abre o arquivo padrão armazenado nos resources.
-        try (InputStream is = PartyState.class.getResourceAsStream(
-                "/com/example/save/dados.json")) {
-
-            // Se o arquivo não for encontrado nos resources,
-            // lança uma exceção.
-            if (is == null) {
-                throw new IOException(
-                        "Arquivo padrão dados.json não encontrado.");
-            }
-
-            // Copia o arquivo padrão dos resources
-            // para a pasta de dados do usuário.
-            Files.copy(is, DATA_FILE);
-        }
+        MAPPER.writerWithDefaultPrettyPrinter().writeValue(DATA_FILE.toFile(), new ArrayList<Jogador>());
     }
 
     public static String mostrarParty() {
@@ -85,5 +69,31 @@ public final class PartyState {
                         .map(Jogador::toString)
                         .reduce("=== PARTY ===\n\n",
                                 (a, b) -> a + b + "\n--------------------\n");
+    }
+
+    public static void dividirXpParty(int valor) throws IOException {
+        int xpRecebido = valor / party.size();
+        int somaXp;
+        for (Jogador jogador : party) {
+            somaXp = jogador.getxpAtual() + xpRecebido;
+
+            if (somaXp == 100) {
+                jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + 1);
+                jogador.setxpAtual(0);
+                jogador.setNivel(jogador.getNivel() + 1);
+            } else if (somaXp > 100) {
+                jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + somaXp / 100);
+                jogador.setNivel(jogador.getNivel() + somaXp / 100);
+                jogador.setxpAtual(somaXp % 100);
+            } else
+                jogador.setxpAtual(somaXp);
+        }
+    }
+
+    public static void dividirOuroParty(int valor) throws IOException {
+        int ouroRecebido = valor / party.size();
+
+        for (Jogador jogador : party)
+            jogador.setOuro(jogador.getOuro() + ouroRecebido);
     }
 }

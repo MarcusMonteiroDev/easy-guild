@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -56,7 +57,7 @@ public class CharacterScreemController {
     @FXML
     private void newPlayer() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/NewPlayerScreem.fxml"));
-        
+
         Parent root = loader.load();
 
         Stage popup = new Stage();
@@ -66,6 +67,46 @@ public class CharacterScreemController {
         popup.setScene(new Scene(root));
 
         popup.showAndWait();
+    }
+
+    @FXML
+    private void dividirXp() throws IOException {
+        QuantidadePopUpController popUpController;
+        Integer valor;
+        while (true) {
+            popUpController = CardCharacterController.abrirPopUp();
+            valor = popUpController.getValor();
+            if (valor == null) {
+                break;
+            }
+            if (valor <= 0) {
+                alertaErro();
+            } else {
+                System.out.println("Valor valido -> " + valor);
+                PartyState.dividirXpParty(valor);
+
+                break;
+            }
+        }
+    }
+
+    @FXML
+    private void dividirOuro() throws IOException {
+        QuantidadePopUpController popUpController = CardCharacterController.abrirPopUp();
+        int valor = popUpController.getValor();
+
+        PartyState.dividirOuroParty(valor);
+        PartyState.salvarParty();
+    }
+
+    private void alertaErro() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível registrar o valor");
+        alert.setContentText("Insira um valor válido");
+
+        alert.showAndWait();
+
     }
 
 }

@@ -155,10 +155,9 @@ public class CardCharacterController {
         hpPoints.textProperty().bind(jogador.vidaAtualProperty().asString());
         hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
         barraHp.progressProperty().bind(
-            Bindings.when(jogador.vidaMaxProperty().isEqualTo(0))
-                .then(0.0)
-                .otherwise(jogador.vidaAtualProperty().multiply(1.0).divide(jogador.vidaMaxProperty()))
-        );
+                Bindings.when(jogador.vidaMaxProperty().isEqualTo(0))
+                        .then(0.0)
+                        .otherwise(jogador.vidaAtualProperty().multiply(1.0).divide(jogador.vidaMaxProperty())));
         xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
         xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
         barraXp.progressProperty().bind(jogador.xpAtualProperty().divide(100.0));
@@ -207,7 +206,6 @@ public class CardCharacterController {
             jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + 1);
             jogador.setxpAtual(0);
             jogador.setNivel(jogador.getNivel() + 1);
-            ;
         } else if (somaXp > 100) {
             jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + somaXp / 100);
             jogador.setNivel(jogador.getNivel() + somaXp / 100);
@@ -243,17 +241,15 @@ public class CardCharacterController {
         else
             jogador.setVidaAtual(jogador.getVidaAtual() + cura);
 
-        System.out.println("Cura aplicada");
-
         jogador.setJogadorVivo(true);
-        System.out.println("Estado jogador -> " + jogador.getJogadorVivo());
 
         PartyState.salvarParty();
     }
 
-    private QuantidadePopUpController abrirPopUp() throws IOException {
+    public static QuantidadePopUpController abrirPopUp() throws IOException {
         // Cria a classe responsável por carregar os arquivos fxml
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/QuantidadePopUp.fxml"));
+        FXMLLoader loader = new FXMLLoader(
+                CardCharacterController.class.getResource("/com/example/fxml/QuantidadePopUp.fxml"));
         // Carrega o fxml
         Parent root = loader.load();
         // Carrega o controller associado ao fxml carregado
@@ -264,6 +260,12 @@ public class CardCharacterController {
         popup.initModality(Modality.APPLICATION_MODAL);
 
         popup.setScene(new Scene(root));
+
+        popup.setOnHidden(event -> {
+            if (quantidadePopUpController.getValor() == null) {
+                System.out.println("Nenhum valor inserido");
+            }
+        });
 
         popup.showAndWait();
 
