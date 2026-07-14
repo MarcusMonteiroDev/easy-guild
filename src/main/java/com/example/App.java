@@ -19,7 +19,7 @@ public class App extends Application {
 
         PartyState.carregaParty();
 
-        //scene = new Scene(loadFXML("NewPlayerScreem"));
+        // scene = new Scene(loadFXML("NewPlayerScreem"));
         scene = new Scene(loadFXML("CharacterScreem"));
 
         // stage.setMinWidth(600);
@@ -32,8 +32,8 @@ public class App extends Application {
     }
 
     @Override
-    public void stop() {
-        System.out.println("Janela fechada");
+    public void stop() throws IOException {
+        PartyState.salvarParty();
     }
 
     static void setRoot(String fxml) throws IOException {

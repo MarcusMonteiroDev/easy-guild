@@ -32,19 +32,12 @@ public final class PartyState {
 
     public static void addPlayser(Jogador jogador) {
         party.add(jogador);
-        System.out.println("Jogador Adicionado:\n" + jogador.toString());
-        
+
     }
 
     public static void deletePlayer(String ID) throws IOException {
-        System.out.println("ID procurado -> " + ID);
-        System.out.println("LISTA ANTES:");
-        System.out.println(mostrarParty());
 
         party.removeIf(jogador -> jogador.getID().equals(ID));
-
-        System.out.println("LISTA DEPOIS:");
-        System.out.println(mostrarParty());
 
         salvarParty();
     }
@@ -53,14 +46,12 @@ public final class PartyState {
         inicializarParty();
         party = MAPPER.readValue(DATA_FILE.toFile(), new TypeReference<ArrayList<Jogador>>() {
         });
-        //System.out.println(mostrarParty());
     }
 
     public static void salvarParty() throws IOException {
         inicializarParty();
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(DATA_FILE.toFile(), party);
         System.out.println("Party salva");
-        System.out.println(mostrarParty());
     }
 
     private static void inicializarParty() throws IOException {

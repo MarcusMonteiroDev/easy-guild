@@ -253,10 +253,7 @@ public class Jogador {
     private void atualizarEstadoJogador(int valorNovo) {
         if (valorNovo <= 0) {
             jogadorVivo.set(false);
-        
-            System.out.println("O jogador morreu");
         }
-
     }
 
     // metodos publicos
