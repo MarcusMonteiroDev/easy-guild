@@ -1,8 +1,6 @@
 package com.example.controllers;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.example.PartyState;
@@ -14,9 +12,7 @@ import com.example.models.Jogador;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
@@ -122,19 +118,19 @@ public class NewPlayerController {
 
             try {
                 PartyState.addPlayser(jogador);
+
                 PartyState.salvarParty();
 
                 CharacterScreemController.getInstance().adicionarJogador(jogador);
 
                 Stage stage = (Stage) nome.getScene().getWindow();
+                
                 stage.close();
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
         } catch (Exception e) {
-            System.out.println("Preencha os dados corretamente!");
             alertaErro();
         }
     }

@@ -7,6 +7,7 @@ import com.example.enums.Equipamentos;
 import com.example.enums.Idiomas;
 import com.example.models.Jogador;
 import javafx.beans.binding.Bindings;
+import javafx.beans.binding.DoubleBinding;
 import javafx.collections.ListChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -47,6 +49,9 @@ public class CardCharacterController {
     private Label xpNextLvl;
 
     @FXML
+    private ProgressBar barraXp;
+
+    @FXML
     private Label valorAtk;
 
     @FXML
@@ -71,9 +76,6 @@ public class CardCharacterController {
     private Button btnMenosOuro;
 
     @FXML
-    private Button addItem;
-
-    @FXML
     private FlowPane flowPaneIdiomas;
 
     @FXML
@@ -83,7 +85,6 @@ public class CardCharacterController {
 
     @FXML
     public void initialize() {
-        
 
     }
 
@@ -131,6 +132,7 @@ public class CardCharacterController {
         hpMax.textProperty().bind(jogador.vidaMaxProperty().asString());
         xpPoints.textProperty().bind(jogador.xpAtualProperty().asString());
         xpNextLvl.textProperty().bind(jogador.xpProxNivelProperty().asString());
+        barraXp.progressProperty().bind(jogador.xpAtualProperty().divide(100.0));
         valorAtk.textProperty().bind(jogador.ataqueProperty().asString());
         valorDef.textProperty().bind(jogador.defesaProperty().asString());
         valorOuro.textProperty().bind(jogador.ouroProperty().asString());
@@ -145,6 +147,7 @@ public class CardCharacterController {
         atualizarEquipamentos();
 
     }
+
     @FXML
     private void excluirJogador() throws IOException {
         PartyState.deletePlayer(jogador.getID());
@@ -156,18 +159,34 @@ public class CardCharacterController {
     private void darOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
         jogador.setOuro(jogador.getOuro() + popUpController.getValor());
+        PartyState.salvarParty();
     }
 
     @FXML
     private void tirarOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
         jogador.setOuro(jogador.getOuro() - popUpController.getValor());
+        PartyState.salvarParty();
     }
 
     @FXML
     private void darXp() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-        jogador.setxpAtual(jogador.getxpAtual() + popUpController.getValor());
+        int somaXp = jogador.getxpAtual() + popUpController.getValor();
+
+        if (somaXp == 100) {
+            jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + 1);
+            jogador.setxpAtual(0);
+            jogador.setNivel(jogador.getNivel() + 1);
+            ;
+        } else if (somaXp > 100) {
+            jogador.aumentarAtributos(jogador.getNivel(), jogador.getNivel() + somaXp / 100);
+            jogador.setNivel(jogador.getNivel() + somaXp / 100);
+            jogador.setxpAtual(somaXp % 100);
+        } else
+            jogador.setxpAtual(somaXp);
+
+        PartyState.salvarParty();
     }
 
     @FXML

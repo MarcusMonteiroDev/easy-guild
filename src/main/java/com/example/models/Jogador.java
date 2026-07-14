@@ -33,7 +33,7 @@ public class Jogador {
     private final IntegerProperty vidaAtual = new SimpleIntegerProperty(this, "vidaAtual", 100);
     private final BooleanProperty jogadorVivo = new SimpleBooleanProperty(this, "jogadorVivo", true);
     private final IntegerProperty xpProxNivel = new SimpleIntegerProperty(this, "xpProxNivel", 100);
-    private final IntegerProperty xpAtual = new SimpleIntegerProperty(this, "xpAtual", 100);
+    private final IntegerProperty xpAtual = new SimpleIntegerProperty(this, "xpAtual", 0);
     private final IntegerProperty ouro = new SimpleIntegerProperty(this, "ouro", 0);
     private final IntegerProperty ataque = new SimpleIntegerProperty(this, "ataque", 10);
     private final IntegerProperty defesa = new SimpleIntegerProperty(this, "defesa", 10);
@@ -114,8 +114,7 @@ public class Jogador {
     }
 
     public void setVidaMax(int vidaMax) {
-        verificaIntervalo(vidaMax);
-        this.vidaMax.set(vidaMax);
+        this.vidaMax.set(verificaIntervalo(vidaMax));
     }
 
     public IntegerProperty vidaMaxProperty() {
@@ -127,8 +126,7 @@ public class Jogador {
     }
 
     public void setVidaAtual(int vidaAtual) {
-        verificaIntervalo(vidaAtual);
-        this.vidaAtual.set(vidaAtual);
+        this.vidaAtual.set(verificaIntervalo(vidaAtual));
     }
 
     public IntegerProperty vidaAtualProperty() {
@@ -176,7 +174,7 @@ public class Jogador {
     }
 
     public void setOuro(int valor) {
-        this.ouro.set(valor);
+        this.ouro.set(verificaIntervalo(valor));
     }
 
     public IntegerProperty ouroProperty() {
@@ -188,7 +186,7 @@ public class Jogador {
     }
 
     public void setAtaque(int ataque) {
-        this.ataque.set(ataque);
+        this.ataque.set(verificaIntervalo(ataque));
     }
 
     public IntegerProperty ataqueProperty() {
@@ -200,7 +198,7 @@ public class Jogador {
     }
 
     public void setDefesa(int defesa) {
-        this.defesa.set(defesa);
+        this.defesa.set(verificaIntervalo(defesa));
     }
 
     public IntegerProperty defesaProperty() {
@@ -243,9 +241,13 @@ public class Jogador {
         }
     }
 
-    private void verificaIntervalo(int valor) {
-        if (valor > 100 || valor < 0)
+    private int verificaIntervalo(int valor) {
+        if (valor < 0)
             throw new IllegalArgumentException("Valor inválido para o parâmetro inserido");
+        else if (valor > 999)
+            return 999;
+
+        return valor;
     }
 
     private void atualizarEstadoJogador(int valorNovo) {
@@ -283,5 +285,25 @@ public class Jogador {
                 getOuro(),
                 getAtaque(),
                 getDefesa());
+    }
+
+    public void aumentarAtributos(int nivelInicial, int nivelFinal) {
+        // Atributos evoluem 20% inicialmente e a cada nível reduzem a evolução em 0,2%
+        // até o mínimo de 0,1%
+        // Fórmula = 20 - 0,2 * (nível - 1)
+        double multiplicador = 1 + (20.0 - 0.2 * (getNivel() - 1)) / 100.0;
+        int niveis = nivelFinal - nivelInicial;
+        if (niveis == 1) {
+            setAtaque((int) (getAtaque() * multiplicador));
+            setDefesa((int) (getDefesa() * multiplicador));
+            setVidaMax((int) (getVidaMax() * (multiplicador - 0.1)));
+        } else {
+            for (int i = 0; i < niveis; i++) {
+                setAtaque((int) (getAtaque() * multiplicador));
+                setDefesa((int) (getDefesa() * multiplicador));
+                setVidaMax((int) (getVidaMax() * multiplicador));
+                multiplicador = 1 + (20.0 - 0.2 * ((getNivel() + i) - 1)) / 100.0;
+            }
+        }
     }
 }
