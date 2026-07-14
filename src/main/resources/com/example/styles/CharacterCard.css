@@ -1,27 +1,43 @@
 * {
     -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
 
 .label {
     -fx-text-fill: white;
 }
 
+/* CONTAINER PRINCIPAL */
 #mainVBox {
-    /*-fx-background-color: #172032;*/
+    -fx-background-color: #172032;
+    -fx-border-color: #2a364a;
+    -fx-border-width: 2px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 5);
+    -fx-pref-width: 360px;
+    -fx-min-width: 360px;
 }
 
+/* HEADER */
 #hBox_1 {
     -fx-border-color: transparent transparent #2a364a transparent;
     -fx-border-width: 0 0 1 0;
-    -fx-background-color: #172032;
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+}
+
+#nomePersonagem {
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
 }
 
 #nivelPersonagem {
     -fx-background-color: #4f46e5;
     -fx-text-fill: white;
     -fx-background-radius: 10px;
-    -fx-padding: 2px;
+    -fx-padding: 2px 6px;
+    -fx-font-weight: bold;
 }
 
 #classeRaca {
@@ -30,46 +46,65 @@
     -fx-font-weight: bold;
 }
 
-#mainVBox {}
-
-#nomePersonagem {
-    -fx-font-weight: bolder;
-    -fx-text-fill: white;
-    -fx-font-size: 18px;
+#labelMorto {
+    -fx-text-fill: #e4696b;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(228, 105, 107, 0.2);
+    -fx-padding: 4px 8px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #e4696b;
+    -fx-border-radius: 6px;
 }
 
 #btnExcluir {
     -fx-background-color: transparent;
+    -fx-background-radius: 8px;
 }
 
-/* XP e HP */
+#btnExcluir:hover {
+    -fx-background-color: #2a364a;
+}
 
+/* INFORMAÇÕES */
 .info {
     -fx-background-color: #1e293b;
+    -fx-padding: 5px 10px;
 }
 
-
-
+/* BARRAS DE PROGRESSO */
 .progress-bar {
     -fx-background-color: transparent;
-    -fx-padding: 2;
+    -fx-max-width: infinity;
 }
 
 .progress-bar .track {
-    -fx-background-color: #2eb709;
+    -fx-background-color: #172032;
     -fx-background-radius: 10;
+    -fx-border-color: #2a364a;
+    -fx-border-radius: 10;
 }
 
 .progress-bar .bar {
-    -fx-background-color: #4f46e5;
-    -fx-background-radius: 10;
+    -fx-background-radius: 8;
+    -fx-background-insets: 2;
+    -fx-padding: 0;
+}
+
+#barraHp {
+    -fx-pref-height: 20px;
+    -fx-min-height: 20px;
+}
+
+#barraHp .bar {
+    -fx-background-color: #2eb709;
 }
 
 #barraXp {
-    -fx-pref-height: 14px;
+    -fx-pref-height: 12px;
+    -fx-min-height: 12px;
 }
 
-#barraXp .track {
+#barraXp .bar {
     -fx-background-color: #099ab7;
 }
 
@@ -78,18 +113,17 @@
     -fx-border-width: 0 0 1 0;
 }
 
-#labelHp {
-    -fx-font-size: 16px;
+/* STATUS */
+#hpPoints, #hpMax, #xpPoints, #xpNextLvl {
     -fx-font-weight: bold;
+    -fx-text-fill: #cbd5e1;
 }
 
-#hpPoints {}
-
-/* Atributos */
-
+/* ATRIBUTOS */
 .hBoxAtributos {
     -fx-border-color: transparent #2a364a #2a364a transparent;
     -fx-border-width: 0 1 1 0;
+    -fx-padding: 5px;
 }
 
 .labelAtributos {
@@ -106,18 +140,43 @@
     -fx-text-fill: #f4cb15e2;
 }
 
-/* Inventário */
-
+/* INVENTÁRIO */
 #labelInventario {
     -fx-text-fill: #6a7b82;
     -fx-font-size: 18px;
     -fx-font-weight: bolder;
 }
 
-#listaEquipamentos, #scrollItems {
-    -fx-background-color: #172032;
+#scrollItems {
+    -fx-background-color: transparent;
+    -fx-background: #172032;
+    -fx-border-color: #2a364a;
+    -fx-border-radius: 8px;
 }
 
+#scrollItems .viewport {
+    -fx-background-color: transparent;
+}
+
+#listaEquipamentos {
+    -fx-background-color: transparent;
+    -fx-padding: 5px;
+}
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #1e293b;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2a364a;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #3b4c68;
+}
+
+/* BOTÃO ADICIONAR */
 .botaoAdd {
     -fx-background-color: transparent;
     -fx-border-width: 1px;
@@ -130,48 +189,50 @@
     -fx-font-size: 10px;
 }
 
-/* Idiomas */
+.botaoAdd:hover {
+    -fx-background-color: rgba(93, 85, 235, 0.1);
+}
+
+/* IDIOMAS */
 #labelIdiomas {
     -fx-text-fill: #6a7b82;
     -fx-font-size: 16px;
     -fx-font-weight: bolder;
 }
 
-.labelIdioma {
-    -fx-font-size: 10px;
-    -fx-text-fill: white;
+#flowPaneIdiomas {
+    -fx-padding: 0 0 10px 5px;
+}
 
+.labelIdioma {
+    -fx-font-size: 11px;
+    -fx-text-fill: white;
     -fx-border-color: #6a7b82;
     -fx-border-width: 1px;
     -fx-border-radius: 8px;
-
+    -fx-background-color: #2a364a;
     -fx-padding: 4px 8px;
 }
 
-/* Botões ações */
-
+/* BOTÕES DE AÇÃO */
 #gridBotoes {
     -fx-background-color: #172032;
+    -fx-padding: 10px;
+    -fx-hgap: 5px;
+    -fx-background-radius: 0 0 12px 12px;
 }
 
 .btnAcao {
     -fx-background-color: #1f2a3a;
-    -fx-background-radius: 10;
+    -fx-background-radius: 8px;
     -fx-padding: 8 12 8 12;
     -fx-cursor: hand;
-
-    /*
--fx-pref-width: 50px;
--fx-pref-height: 50px;
--fx-min-width: 50px;
--fx-min-height: 50px;
--fx-max-width: 50px;
--fx-max-height: 50px;
-*/
+    -fx-border-color: #2a364a;
+    -fx-border-radius: 8px;
 }
 
 .btnAcao .label {
-    -fx-font-size: 10px;
+    -fx-font-size: 11px;
     -fx-font-weight: bold;
 }
 
@@ -183,6 +244,7 @@
     -fx-background-color: #172032;
 }
 
+/* CORES DOS BOTÕES */
 #btnDano .label {
     -fx-text-fill: #e4696b;
 }

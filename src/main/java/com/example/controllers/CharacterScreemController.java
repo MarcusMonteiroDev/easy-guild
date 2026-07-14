@@ -64,13 +64,22 @@ public class CharacterScreemController {
 
         popup.initModality(Modality.APPLICATION_MODAL);
 
-        popup.setScene(new Scene(root));
+        popup.setScene(new Scene(root, 400, 600));
+
+        popup.setMinWidth(480);
+        popup.setMinHeight(600);
+        popup.setResizable(false);
 
         popup.showAndWait();
     }
 
     @FXML
     private void dividirXp() throws IOException {
+        if (PartyState.getParty().size() == 0) {
+            alertaErroSemJogadores();
+            return;
+        }
+
         QuantidadePopUpController popUpController;
         Integer valor;
         while (true) {
@@ -78,13 +87,11 @@ public class CharacterScreemController {
             valor = popUpController.getValor();
             if (valor == null) {
                 break;
-            }
-            if (valor <= 0) {
+            } else if (valor < 0) {
                 alertaErro();
+                popUpController.setValor(0);
             } else {
-                System.out.println("Valor valido -> " + valor);
                 PartyState.dividirXpParty(valor);
-
                 break;
             }
         }
@@ -92,6 +99,11 @@ public class CharacterScreemController {
 
     @FXML
     private void dividirOuro() throws IOException {
+        if (PartyState.getParty().size() == 0) {
+            alertaErroSemJogadores();
+            return;
+        }
+
         QuantidadePopUpController popUpController = CardCharacterController.abrirPopUp();
         int valor = popUpController.getValor();
 
@@ -104,9 +116,14 @@ public class CharacterScreemController {
         alert.setTitle("Erro");
         alert.setHeaderText("Não foi possível registrar o valor");
         alert.setContentText("Insira um valor válido");
-
         alert.showAndWait();
-
     }
 
+    private void alertaErroSemJogadores() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível registrar o valor");
+        alert.setContentText("Não existem jogadores no grupo.");
+        alert.showAndWait();
+    }
 }

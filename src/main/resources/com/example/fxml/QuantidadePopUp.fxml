@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.QuantidadePopUpController">
+<VBox alignment="CENTER" spacing="12.0" styleClass="vbox-container" stylesheets="@../styles/QuantidadePopUp.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.QuantidadePopUpController">
    <children>
       <Label fx:id="labelErro" text="Digite um valor válido!" />
+      
       <Label text="Quantidade aplicada:" />
-      <TextField fx:id="input" />
-      <Button defaultButton="true" mnemonicParsing="false" onAction="#confirmar" text="Confirmar" />
+      
+      <TextField fx:id="input" maxWidth="120.0" />
+      
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#confirmar" text="Confirmar" styleClass="btn-submit">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

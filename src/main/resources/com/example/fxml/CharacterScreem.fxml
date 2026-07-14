@@ -11,20 +11,20 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="telaAventureiros" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CharacterScreemController">
+<AnchorPane fx:id="telaAventureiros" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/CharacterScreem.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CharacterScreemController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <GridPane alignment="CENTER" prefHeight="0.0" prefWidth="600.0" style="-fx-border-color: RED;" VBox.vgrow="ALWAYS">
+            <GridPane alignment="CENTER" VBox.vgrow="NEVER">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="305.5999755859375" minWidth="10.0" prefWidth="305.5999755859375" />
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.20001220703125" minWidth="10.0" prefWidth="294.4000244140625" />
                </columnConstraints>
                <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
                </rowConstraints>
                <children>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                  <HBox alignment="CENTER_LEFT" spacing="20.0">
                      <children>
                         <Button fx:id="btnDividirXp" mnemonicParsing="false" onAction="#dividirXp" text="Dividir XP" />
                         <Button fx:id="btnDividirOuro" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#dividirOuro" text="Dividir Ouro" />
@@ -33,7 +33,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </HBox>
-                  <HBox alignment="CENTER_RIGHT" prefHeight="298.0" prefWidth="295.0" GridPane.columnIndex="1">
+                  <HBox alignment="CENTER_RIGHT" GridPane.columnIndex="1">
                      <children>
                         <Button fx:id="btnNovoJogador" mnemonicParsing="false" onAction="#newPlayer" text="Novo Jogador" />
                      </children>
@@ -42,8 +42,11 @@
                      </padding>
                   </HBox>
                </children>
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
             </GridPane>
-            <ScrollPane fitToWidth="true" prefHeight="266.0" style="-fx-border-color: BLUE;" VBox.vgrow="ALWAYS">
+            <ScrollPane fitToWidth="true" prefHeight="266.0" VBox.vgrow="ALWAYS">
                <content>
                   <FlowPane fx:id="galeriaAventureiros" alignment="CENTER" columnHalignment="CENTER" hgap="15.0" vgap="15.0" />
                </content>

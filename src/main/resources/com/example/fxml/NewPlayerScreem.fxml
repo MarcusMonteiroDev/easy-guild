@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,47 +10,65 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane hbarPolicy="NEVER" prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.NewPlayerController">
-   <content>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0">
-         <children>
-            <Label text="Insira dados do Jogador" />
-            <Label text="Nome" />
-            <TextField fx:id="nome" />
-            <Label text="Raça" />
-            <ComboBox fx:id="raca" prefWidth="150.0" />
-            <Label layoutX="97.0" layoutY="71.0" text="Classe" />
-            <ComboBox fx:id="classe" layoutX="35.0" layoutY="88.0" prefWidth="150.0" />
-            <Label text="HP Máximo" />
-            <TextField fx:id="hp" />
-            <Label layoutX="80.0" layoutY="157.0" text="Valor de Ataque" />
-            <TextField fx:id="ataque" layoutX="10.0" layoutY="175.0" />
-            <Label layoutX="67.0" layoutY="200.0" text="Valor de Defesa" />
-            <TextField fx:id="defesa" layoutX="10.0" layoutY="218.0" />
-            <Label layoutX="68.0" layoutY="244.0" text="Ouro Inicial" />
-            <TextField fx:id="ouro" layoutX="10.0" layoutY="261.0" />
-            <Label text="Idiomas Conhecidos" />
-            <FlowPane fx:id="flowPaneIdiomas">
+<VBox alignment="CENTER" stylesheets="@../styles/NewPlayerScreem.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.NewPlayerController">
+   <children>
+      <ScrollPane hbarPolicy="NEVER" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+         <content>
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" styleClass="vbox-container">
                <children>
-                  <ToggleButton fx:id="idmAnao" mnemonicParsing="false" text="ANAO" />
-                  <ToggleButton fx:id="idmComum" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="COMUM" />
-                  <ToggleButton fx:id="idmDraconico" layoutX="99.0" layoutY="10.0" mnemonicParsing="false" text="DRACONICO" />
-                  <ToggleButton fx:id="idmElfico" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" text="ELFICO" />
-                  <ToggleButton fx:id="idmHalfling" layoutX="99.0" layoutY="36.0" mnemonicParsing="false" text="HALFLING" />
-                  <ToggleButton fx:id="idmOrc" layoutX="10.0" layoutY="61.0" mnemonicParsing="false" text="ORC" />
+                  <Label styleClass="title-label" text="Insira dados do Jogador" />
+            
+                  <Label text="Nome" />
+                  <TextField fx:id="nome" />
+                  
+                  <Label text="Raça" />
+                  <ComboBox fx:id="raca" prefWidth="150.0" />
+                  
+                  <Label text="Classe" />
+                  <ComboBox fx:id="classe" prefWidth="150.0" />
+                  
+                  <Label text="HP Máximo" />
+                  <TextField fx:id="hp" />
+                  
+                  <Label text="Valor de Ataque" />
+                  <TextField fx:id="ataque" />
+                  
+                  <Label text="Valor de Defesa" />
+                  <TextField fx:id="defesa" />
+                  
+                  <Label text="Ouro Inicial" />
+                  <TextField fx:id="ouro" />
+        
+                  <Label text="Idiomas Conhecidos" />
+                  <FlowPane fx:id="flowPaneIdiomas" styleClass="flow-pane">
+                     <children>
+                        <ToggleButton fx:id="idmAnao" mnemonicParsing="false" text="ANAO" />
+                        <ToggleButton fx:id="idmComum" mnemonicParsing="false" text="COMUM" />
+                        <ToggleButton fx:id="idmDraconico" mnemonicParsing="false" text="DRACONICO" />
+                        <ToggleButton fx:id="idmElfico" mnemonicParsing="false" text="ELFICO" />
+                        <ToggleButton fx:id="idmHalfling" mnemonicParsing="false" text="HALFLING" />
+                        <ToggleButton fx:id="idmOrc" mnemonicParsing="false" text="ORC" />
+                     </children>
+                  </FlowPane>
+                  
+                  <Label text="Equipamentos Iniciais" />
+                  <FlowPane styleClass="flow-pane">
+                     <children>
+                        <ToggleButton fx:id="equipArco" mnemonicParsing="false" text="ARCO" />
+                        <ToggleButton fx:id="equipCajado" mnemonicParsing="false" text="CAJADO" />
+                        <ToggleButton fx:id="equipEspada" mnemonicParsing="false" text="ESPADA" />
+                        <ToggleButton fx:id="equipMachado" mnemonicParsing="false" text="MACHADO" />
+                     </children>
+                  </FlowPane>
+             
+                  <Button mnemonicParsing="false" onAction="#addToParty" styleClass="btn-submit" text="Adicionar à Party">
+                     <VBox.margin>
+                        <Insets top="15.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
-            </FlowPane>
-            <Label text="Equipamentos Iniciais" />
-            <FlowPane>
-               <children>
-                  <ToggleButton fx:id="equipArco" mnemonicParsing="false" text="ARCO" />
-                  <ToggleButton fx:id="equipCajado" layoutX="99.0" layoutY="36.0" mnemonicParsing="false" text="CAJADO" />
-                  <ToggleButton fx:id="equipEspada" layoutX="99.0" layoutY="61.0" mnemonicParsing="false" text="ESPADA" />
-                  <ToggleButton fx:id="equipMachado" layoutX="10.0" layoutY="87.0" mnemonicParsing="false" text="MACHADO" />
-               </children>
-            </FlowPane>
-            <Button mnemonicParsing="false" onAction="#addToParty" text="Adicionar à Party" />
-         </children>
-      </VBox>
-   </content>
-</ScrollPane>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</VBox>

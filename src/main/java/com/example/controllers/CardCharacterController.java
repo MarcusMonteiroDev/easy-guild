@@ -261,12 +261,13 @@ public class CardCharacterController {
 
         popup.setScene(new Scene(root));
 
+        // Dispara quando o popup é fechado
         popup.setOnHidden(event -> {
-            if (quantidadePopUpController.getValor() == null) {
-                System.out.println("Nenhum valor inserido");
-            }
+            if (quantidadePopUpController.getValor() == null)
+                quantidadePopUpController.setValor(0);
         });
 
+        popup.setResizable(false);
         popup.showAndWait();
 
         return quantidadePopUpController;

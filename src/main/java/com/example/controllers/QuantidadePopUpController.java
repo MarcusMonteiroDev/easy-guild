@@ -12,7 +12,7 @@ public class QuantidadePopUpController {
     @FXML
     private TextField input;
 
-    private Integer valor;
+    private Integer valor = 0;
 
     @FXML
     public void initialize() {
@@ -35,5 +35,9 @@ public class QuantidadePopUpController {
 
     public Integer getValor() {
         return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 }

@@ -1,0 +1,99 @@
+/* ========================================= */
+/* TELA PRINCIPAL (GALERIA DE AVENTUREIROS)  */
+/* ========================================= */
+
+.root {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Fundo principal bem escuro para destacar os cards */
+    -fx-background-color: #0f172a; 
+}
+
+/* ========================================= */
+/* BARRA SUPERIOR (Onde ficam os botões)    */
+/* ========================================= */
+.grid-pane {
+    -fx-background-color: #172032; /* Um pouco mais claro que o fundo principal */
+    -fx-border-color: transparent transparent #2a364a transparent; /* Borda apenas embaixo */
+    -fx-border-width: 2px;
+    -fx-padding: 10px 0; /* Um respiro para os botões não colarem nas bordas */
+}
+
+/* ========================================= */
+/* BOTÕES GERAIS                             */
+/* ========================================= */
+.button {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-padding: 8px 16px;
+    -fx-border-radius: 8px;
+}
+
+/* BOTÕES DE DIVIDIR (Secundários) */
+#btnDividirXp, #btnDividirOuro {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #2a364a;
+}
+
+#btnDividirXp:hover, #btnDividirOuro:hover {
+    -fx-background-color: #27364a;
+}
+
+#btnDividirXp {
+    -fx-text-fill: #7a85eb; /* Azul do XP */
+}
+
+#btnDividirOuro {
+    -fx-text-fill: #e0b817; /* Amarelo do Ouro */
+}
+
+/* BOTÃO NOVO JOGADOR (Primário - Destaque) */
+#btnNovoJogador {
+    -fx-background-color: #4f46e5; /* Roxo/Índigo */
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+#btnNovoJogador:hover {
+    -fx-background-color: #5d55eb; /* Fica um pouco mais claro no hover */
+}
+
+/* ========================================= */
+/* ÁREA DE ROLAGEM E GALERIA                 */
+/* ========================================= */
+
+/* Remove o fundo branco e as bordas padrão do JavaFX */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: #0f172a; /* Combina com o root */
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+/* O FlowPane onde os cards são "jogados" */
+#galeriaAventureiros {
+    -fx-background-color: transparent;
+    -fx-padding: 20px; /* Dá uma margem para os cards não encostarem nas bordas da janela */
+}
+
+/* ESTILIZAÇÃO DA BARRA DE ROLAGEM */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #2a364a;
+    -fx-background-radius: 5px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #3b4c68;
+}
