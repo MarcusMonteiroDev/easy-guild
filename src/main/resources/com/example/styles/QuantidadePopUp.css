@@ -1,0 +1,69 @@
+/* ========================================= */
+/* POPUP DE QUANTIDADE (Dano, Cura, Ouro)    */
+/* ========================================= */
+
+.root {
+    -fx-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -fx-background-color: #0f172a;
+}
+
+/* O container principal */
+.vbox-container {
+    -fx-padding: 20px;
+    -fx-background-color: #0f172a;
+}
+
+/* Estilo padrão para o texto */
+.label {
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* O texto de erro (fica vermelho quando for exibido) */
+#labelErro {
+    -fx-text-fill: #e4696b;
+    -fx-font-size: 12px;
+}
+
+/* Campo de entrada de texto/número */
+.text-field {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: white;
+    -fx-background-radius: 8px;
+    -fx-border-color: #2a364a;
+    -fx-border-radius: 8px;
+    -fx-padding: 8px;
+    /* Alinha o número introduzido no centro da caixa */
+    -fx-alignment: center; 
+}
+
+.text-field:focused {
+    -fx-border-color: #4f46e5;
+}
+
+/* ========================================= */
+/* BOTÃO DE CONFIRMAR (ESTILO PREMIUM)       */
+/* ========================================= */
+.button.btn-submit {
+    -fx-background-color: linear-gradient(to right, #4f46e5, #5d55eb);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.4), 10, 0, 0, 4);
+}
+
+.button.btn-submit:hover {
+    -fx-background-color: linear-gradient(to right, #5d55eb, #7a85eb);
+    -fx-effect: dropshadow(three-pass-box, rgba(93, 85, 235, 0.6), 15, 0, 0, 5);
+}
+
+.button.btn-submit:pressed {
+    -fx-background-color: #3b32c0;
+    -fx-effect: dropshadow(three-pass-box, rgba(79, 70, 229, 0.2), 5, 0, 0, 2);
+}

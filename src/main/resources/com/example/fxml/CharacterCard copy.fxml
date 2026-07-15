@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="mainVBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="300.0" stylesheets="@../styles/CharacterCard.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.CardCharacterController">
+
+         <children>
+
+            <!-- HEADER -->
+      <HBox fx:id="hBox_1" spacing="10" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="BOTTOM_LEFT" spacing="10.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="nomePersonagem" text="Nome">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="nivelPersonagem" text="Lvl 30">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+
+                        <HBox spacing="10" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label fx:id="classeRaca" text="Raça - Classe">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+
+                  <Button fx:id="btnExcluir" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" onAction="#excluirJogador" prefHeight="40.0" prefWidth="40.0" textFill="#fff9f9" HBox.hgrow="ALWAYS">
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/trash-alt-svgrepo-com.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="60.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Button>
+         </children>
+      </HBox>
+
+                  <!-- HP -->
+      <VBox spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox spacing="5">
+               <children>
+                  <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/heart.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="HP" />
+                  <Label fx:id="hpPoints" layoutX="40.0" layoutY="10.0" text="Vida atual" />
+                  <Label layoutX="60.0" layoutY="10.0" text="/" />
+                  <Label fx:id="hpMax" layoutX="118.0" layoutY="10.0" text="Vida max" />
+               </children>
+            </HBox>
+
+                        <ProgressBar progress="0.0" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ProgressBar>
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
+
+                  <!-- XP -->
+      <VBox fx:id="vBoxXp" spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
+         <children>
+            <HBox spacing="5">
+               <children>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/star.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="XP" />
+                  <Label text="Xp atual" fx:id="xpPoints" />
+                  <Label text="/" />
+                  <Label text="Xp prox nivel" fx:id="xpNextLvl" />
+               </children>
+            </HBox>
+
+                        <ProgressBar fx:id="barraXp" progress="0.0">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </ProgressBar>
+         </children>
+      </VBox>
+
+                  <!-- STATS -->
+      <HBox styleClass="info" VBox.vgrow="ALWAYS">
+         <children>
+
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="12.0" fitWidth="12.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/sword.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="labelAtributos" text="ATK" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="valorAtk" styleClass="valoresAtributos" text="10" />
+               </children>
+            </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/shield.png" />
+                           </image>
+                        </ImageView>
+                        <Label styleClass="labelAtributos" text="DEF" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="valorDef" styleClass="valoresAtributos" text="10" />
+               </children>
+            </VBox>
+
+                        <VBox alignment="CENTER" spacing="5" styleClass="hBoxAtributos" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" spacing="3.0">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/gold.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="atributoOuro" styleClass="labelAtributos" text="OURO" />
+                     </children>
+                  </HBox>
+                  <Label fx:id="valorOuro" styleClass="valoresAtributos" text="10" />
+               </children>
+            </VBox>
+
+                     </children>
+      </HBox>
+
+                  <!-- INVENTÁRIO -->
+      <VBox spacing="5.0" styleClass="info" VBox.vgrow="ALWAYS">
+         <children>
+
+                        <HBox spacing="10">
+               <children>
+                  <Label fx:id="labelInventario" text="Inventário">
+                     <HBox.margin>
+                        <Insets left="5.0" top="3.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="addItem" mnemonicParsing="false" styleClass="botaoAdd" text="+ Add">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollItems" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <VBox fx:id="listaEquipamentos" />
+               </content>
+            </ScrollPane>
+
+                     </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </VBox>
+
+                  <!-- IDIOMAS -->
+      <VBox spacing="5" styleClass="info" VBox.vgrow="ALWAYS">
+         <children>
+
+                        <Label fx:id="labelIdiomas" text="Idiomas">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+
+                        <FlowPane fx:id="flowPaneIdiomas" hgap="10" vgap="5" />
+
+                     </children>
+      </VBox>
+      <GridPane fx:id="gridBotoes" alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+            <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnDano" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#aplicarDano" styleClass="btnAcao">
+               <graphic>
+                  <VBox alignment="CENTER" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/sword-red.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Dano" />
+                     </children>
+                  </VBox>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnCura" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#aplicarCura" styleClass="btnAcao" GridPane.columnIndex="1">
+               <graphic>
+                  <VBox alignment="CENTER" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/heart-green.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Cura" />
+                     </children>
+                  </VBox>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnXp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#darXp" styleClass="btnAcao" GridPane.columnIndex="2">
+               <graphic>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/satr-purple.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="+XP" />
+                     </children>
+                  </VBox>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnOuro" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#darOuro" styleClass="btnAcao" GridPane.columnIndex="3">
+               <graphic>
+                  <VBox alignment="CENTER" spacing="2.0">
+                     <children>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/plus.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="+Ouro" />
+                     </children>
+                  </VBox>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="btnMenosOuro" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#tirarOuro" styleClass="btnAcao" GridPane.columnIndex="4">
+               <graphic>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/minus.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="-Ouro" />
+                     </children>
+                  </VBox>
+               </graphic>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
+
+         </children>
+</VBox>
