@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -263,6 +264,7 @@ public class CardCharacterController {
                 quantidadePopUpController.setValor(0);
         });
 
+        popup.getIcons().add(new Image(CardCharacterController.class.getResourceAsStream("/com/example/img/easy-guild.png")));
         popup.setResizable(false);
         popup.showAndWait();
 
