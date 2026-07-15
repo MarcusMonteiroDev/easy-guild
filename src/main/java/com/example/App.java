@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -19,6 +20,7 @@ public class App extends Application {
         scene = new Scene(loadFXML("CharacterScreem"));
 
         stage.setTitle("Easy Guild");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/com/example/img/easy-guild.png")));
         stage.setScene(scene);
         stage.show();
     }

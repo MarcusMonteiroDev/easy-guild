@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -121,6 +122,7 @@ public class CharacterScreemController {
         popup.setMinWidth(480);
         popup.setMinHeight(600);
         popup.setResizable(false);
+        popup.getIcons().add(new Image(getClass().getResourceAsStream("/com/example/img/easy-guild.png")));
 
         popup.showAndWait();
     }
