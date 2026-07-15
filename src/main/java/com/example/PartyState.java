@@ -1,7 +1,6 @@
 package com.example;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,6 +20,7 @@ public final class PartyState {
 
     private static ArrayList<Jogador> party = new ArrayList<>();
 
+    // Getter e setter
     public static ArrayList<Jogador> getParty() {
         return party;
     }
@@ -29,30 +29,7 @@ public final class PartyState {
         PartyState.party = party;
     }
 
-    public static void addPlayser(Jogador jogador) {
-        party.add(jogador);
-
-    }
-
-    public static void deletePlayer(String ID) throws IOException {
-
-        party.removeIf(jogador -> jogador.getID().equals(ID));
-
-        salvarParty();
-    }
-
-    public static void carregaParty() throws IOException {
-        inicializarParty();
-        party = MAPPER.readValue(DATA_FILE.toFile(), new TypeReference<ArrayList<Jogador>>() {
-        });
-    }
-
-    public static void salvarParty() throws IOException {
-        inicializarParty();
-        MAPPER.writerWithDefaultPrettyPrinter().writeValue(DATA_FILE.toFile(), party);
-        System.out.println("Party salva");
-    }
-
+    // Métodos privados
     private static void inicializarParty() throws IOException {
         if (Files.exists(DATA_FILE))
             return;
@@ -62,13 +39,30 @@ public final class PartyState {
         MAPPER.writerWithDefaultPrettyPrinter().writeValue(DATA_FILE.toFile(), new ArrayList<Jogador>());
     }
 
-    public static String mostrarParty() {
-        return party.isEmpty()
-                ? "A party não possui jogadores."
-                : party.stream()
-                        .map(Jogador::toString)
-                        .reduce("=== PARTY ===\n\n",
-                                (a, b) -> a + b + "\n--------------------\n");
+    // Métodos públicos
+    public static void addPlayser(Jogador jogador) {
+        party.add(jogador);
+
+    }
+
+    public static void carregaParty() throws IOException {
+        inicializarParty();
+        party = MAPPER.readValue(DATA_FILE.toFile(), new TypeReference<ArrayList<Jogador>>() {
+        });
+    }
+
+    public static void deletePlayer(String ID) throws IOException {
+
+        party.removeIf(jogador -> jogador.getID().equals(ID));
+
+        salvarParty();
+    }
+
+    public static void dividirOuroParty(int valor) throws IOException {
+        int ouroRecebido = valor / party.size();
+
+        for (Jogador jogador : party)
+            jogador.setOuro(jogador.getOuro() + ouroRecebido);
     }
 
     public static void dividirXpParty(int valor) throws IOException {
@@ -90,10 +84,8 @@ public final class PartyState {
         }
     }
 
-    public static void dividirOuroParty(int valor) throws IOException {
-        int ouroRecebido = valor / party.size();
-
-        for (Jogador jogador : party)
-            jogador.setOuro(jogador.getOuro() + ouroRecebido);
+    public static void salvarParty() throws IOException {
+        inicializarParty();
+        MAPPER.writerWithDefaultPrettyPrinter().writeValue(DATA_FILE.toFile(), party);
     }
 }

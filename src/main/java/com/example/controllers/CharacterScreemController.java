@@ -21,6 +21,7 @@ public class CharacterScreemController {
 
     public static CharacterScreemController instance;
 
+    // Inicializador
     @FXML
     public void initialize() {
         instance = this;
@@ -30,13 +31,26 @@ public class CharacterScreemController {
         }
     }
 
+    // Getter
     public static CharacterScreemController getInstance() {
         return instance;
     }
 
-    public void adicionarJogador(Jogador jogador) {
-        VBox novoCard = criarCard(jogador);
-        galeriaAventureiros.getChildren().add(novoCard);
+    // Métodos privados
+    private void alertaErro() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível registrar o valor");
+        alert.setContentText("Insira um valor válido");
+        alert.showAndWait();
+    }
+
+    private void alertaErroSemJogadores() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível registrar o valor");
+        alert.setContentText("Não existem jogadores no grupo.");
+        alert.showAndWait();
     }
 
     private VBox criarCard(Jogador jogador) {
@@ -55,22 +69,17 @@ public class CharacterScreemController {
     }
 
     @FXML
-    private void newPlayer() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/NewPlayerScreem.fxml"));
+    private void dividirOuro() throws IOException {
+        if (PartyState.getParty().size() == 0) {
+            alertaErroSemJogadores();
+            return;
+        }
 
-        Parent root = loader.load();
+        QuantidadePopUpController popUpController = CardCharacterController.abrirPopUp();
+        int valor = popUpController.getValor();
 
-        Stage popup = new Stage();
-
-        popup.initModality(Modality.APPLICATION_MODAL);
-
-        popup.setScene(new Scene(root, 400, 600));
-
-        popup.setMinWidth(480);
-        popup.setMinHeight(600);
-        popup.setResizable(false);
-
-        popup.showAndWait();
+        PartyState.dividirOuroParty(valor);
+        PartyState.salvarParty();
     }
 
     @FXML
@@ -98,32 +107,27 @@ public class CharacterScreemController {
     }
 
     @FXML
-    private void dividirOuro() throws IOException {
-        if (PartyState.getParty().size() == 0) {
-            alertaErroSemJogadores();
-            return;
-        }
+    private void newPlayer() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/fxml/NewPlayerScreem.fxml"));
 
-        QuantidadePopUpController popUpController = CardCharacterController.abrirPopUp();
-        int valor = popUpController.getValor();
+        Parent root = loader.load();
 
-        PartyState.dividirOuroParty(valor);
-        PartyState.salvarParty();
+        Stage popup = new Stage();
+
+        popup.initModality(Modality.APPLICATION_MODAL);
+
+        popup.setScene(new Scene(root, 400, 600));
+
+        popup.setMinWidth(480);
+        popup.setMinHeight(600);
+        popup.setResizable(false);
+
+        popup.showAndWait();
     }
 
-    private void alertaErro() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro");
-        alert.setHeaderText("Não foi possível registrar o valor");
-        alert.setContentText("Insira um valor válido");
-        alert.showAndWait();
-    }
-
-    private void alertaErroSemJogadores() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro");
-        alert.setHeaderText("Não foi possível registrar o valor");
-        alert.setContentText("Não existem jogadores no grupo.");
-        alert.showAndWait();
+    // Métodos públicos
+    public void adicionarJogador(Jogador jogador) {
+        VBox novoCard = criarCard(jogador);
+        galeriaAventureiros.getChildren().add(novoCard);
     }
 }

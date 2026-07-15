@@ -88,11 +88,7 @@ public class CardCharacterController {
 
     private Jogador jogador;
 
-    @FXML
-    public void initialize() {
-
-    }
-
+    // Métodos privados
     private void atualizarIdiomas() {
         flowPaneIdiomas.getChildren().clear();
 
@@ -173,27 +169,42 @@ public class CardCharacterController {
 
         atualizarIdiomas();
         atualizarEquipamentos();
-
     }
 
     @FXML
-    private void excluirJogador() throws IOException {
-        PartyState.deletePlayer(jogador.getID());
-        FlowPane pai = (FlowPane) mainVBox.getParent();
-        pai.getChildren().remove(mainVBox);
+    private void aplicarCura() throws IOException {
+        QuantidadePopUpController popUpController = abrirPopUp();
+        int cura = popUpController.getValor();
+
+        if (cura + jogador.getVidaAtual() >= jogador.getVidaMax())
+            jogador.setVidaAtual(jogador.getVidaMax());
+        else
+            jogador.setVidaAtual(jogador.getVidaAtual() + cura);
+
+        jogador.setJogadorVivo(true);
+
+        PartyState.salvarParty();
+    }
+
+    @FXML
+    private void aplicarDano() throws IOException {
+        QuantidadePopUpController popUpController = abrirPopUp();
+        int dano = popUpController.getValor();
+
+        if (jogador.getVidaAtual() - dano <= 0) {
+            jogador.setVidaAtual(0);
+            jogador.setJogadorVivo(false);
+        } else {
+            jogador.setVidaAtual(jogador.getVidaAtual() - dano);
+        }
+
+        PartyState.salvarParty();
     }
 
     @FXML
     private void darOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
         jogador.setOuro(jogador.getOuro() + popUpController.getValor());
-        PartyState.salvarParty();
-    }
-
-    @FXML
-    private void tirarOuro() throws IOException {
-        QuantidadePopUpController popUpController = abrirPopUp();
-        jogador.setOuro(jogador.getOuro() - popUpController.getValor());
         PartyState.salvarParty();
     }
 
@@ -217,35 +228,20 @@ public class CardCharacterController {
     }
 
     @FXML
-    private void aplicarDano() throws IOException {
-        QuantidadePopUpController popUpController = abrirPopUp();
-        int dano = popUpController.getValor();
-
-        if (jogador.getVidaAtual() - dano <= 0) {
-            jogador.setVidaAtual(0);
-            jogador.setJogadorVivo(false);
-        } else {
-            jogador.setVidaAtual(jogador.getVidaAtual() - dano);
-        }
-
-        PartyState.salvarParty();
+    private void excluirJogador() throws IOException {
+        PartyState.deletePlayer(jogador.getID());
+        FlowPane pai = (FlowPane) mainVBox.getParent();
+        pai.getChildren().remove(mainVBox);
     }
 
     @FXML
-    private void aplicarCura() throws IOException {
+    private void tirarOuro() throws IOException {
         QuantidadePopUpController popUpController = abrirPopUp();
-        int cura = popUpController.getValor();
-
-        if (cura + jogador.getVidaAtual() >= jogador.getVidaMax())
-            jogador.setVidaAtual(jogador.getVidaMax());
-        else
-            jogador.setVidaAtual(jogador.getVidaAtual() + cura);
-
-        jogador.setJogadorVivo(true);
-
+        jogador.setOuro(jogador.getOuro() - popUpController.getValor());
         PartyState.salvarParty();
     }
 
+    // Métodos públicos
     public static QuantidadePopUpController abrirPopUp() throws IOException {
         // Cria a classe responsável por carregar os arquivos fxml
         FXMLLoader loader = new FXMLLoader(
@@ -272,5 +268,4 @@ public class CardCharacterController {
 
         return quantidadePopUpController;
     }
-
 }

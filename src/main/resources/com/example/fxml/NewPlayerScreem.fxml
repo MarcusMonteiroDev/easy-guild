@@ -40,7 +40,7 @@
                   <TextField fx:id="ouro" />
         
                   <Label text="Idiomas Conhecidos" />
-                  <FlowPane fx:id="flowPaneIdiomas" styleClass="flow-pane">
+                  <FlowPane styleClass="flow-pane">
                      <children>
                         <ToggleButton fx:id="idmAnao" mnemonicParsing="false" text="ANAO" />
                         <ToggleButton fx:id="idmComum" mnemonicParsing="false" text="COMUM" />

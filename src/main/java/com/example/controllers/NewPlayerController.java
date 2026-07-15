@@ -57,8 +57,6 @@ public class NewPlayerController {
     @FXML
     private ToggleButton idmOrc;
 
-    private List<ToggleButton> idiomas;
-
     @FXML
     private ToggleButton equipArco;
 
@@ -71,8 +69,10 @@ public class NewPlayerController {
     @FXML
     private ToggleButton equipMachado;
 
+    private List<ToggleButton> idiomas;
     private List<ToggleButton> equipamentos;
 
+    // Inicializador
     @FXML
     public void initialize() {
         raca.getItems().addAll(Racas.values());
@@ -84,6 +84,15 @@ public class NewPlayerController {
         this.idiomas = List.of(idmAnao, idmComum, idmDraconico, idmElfico, idmHalfling, idmOrc);
         this.equipamentos = List.of(equipArco, equipCajado, equipEspada, equipMachado);
 
+    }
+
+    public void alertaErro() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erro");
+        alert.setHeaderText("Não foi possível cadastrar o personagem");
+        alert.setContentText("Preencha todos os campos corretamente");
+
+        alert.showAndWait();
     }
 
     @FXML
@@ -124,7 +133,7 @@ public class NewPlayerController {
                 CharacterScreemController.getInstance().adicionarJogador(jogador);
 
                 Stage stage = (Stage) nome.getScene().getWindow();
-                
+
                 stage.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -134,14 +143,4 @@ public class NewPlayerController {
             alertaErro();
         }
     }
-
-    public void alertaErro() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Erro");
-        alert.setHeaderText("Não foi possível cadastrar o personagem");
-        alert.setContentText("Preencha todos os campos corretamente");
-
-        alert.showAndWait();
-    }
-
 }

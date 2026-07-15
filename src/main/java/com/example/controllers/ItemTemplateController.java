@@ -13,14 +13,8 @@ public class ItemTemplateController {
     @FXML
     private Label danoItem;
 
-    @FXML
-    public void initialize() {
-        
-    }
-
     public void criarEquipamento(Equipamentos equipamento) {
         nomeItem.setText(equipamento.getNome());
         danoItem.setText(equipamento.getDano());
     }
-    
 }

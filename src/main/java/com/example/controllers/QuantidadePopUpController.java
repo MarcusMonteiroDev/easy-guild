@@ -14,10 +14,20 @@ public class QuantidadePopUpController {
 
     private Integer valor = 0;
 
+    // Inicializador
     @FXML
     public void initialize() {
         labelErro.setVisible(false);
         labelErro.setManaged(false);
+    }
+
+    // Getter e setter
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(int valor) {
+        this.valor = valor;
     }
 
     @FXML
@@ -31,13 +41,5 @@ public class QuantidadePopUpController {
             labelErro.setManaged(true);
         }
 
-    }
-
-    public Integer getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
     }
 }

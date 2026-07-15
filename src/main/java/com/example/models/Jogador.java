@@ -42,14 +42,14 @@ public class Jogador {
     private final ListProperty<Equipamentos> equipamentos = new SimpleListProperty<>(this, "equipamentos",
             FXCollections.observableArrayList());
 
-    // construtor
+    // Construtor
     public Jogador() {
         this.vidaAtual.addListener((observable, valorAntigo, valorNovo) -> {
             atualizarEstadoJogador(valorNovo.intValue());
         });
     }
 
-    // getters e setters
+    // Getters, setters e properties
     @JsonIgnore
     public String getID() {
         return ID;
@@ -229,9 +229,13 @@ public class Jogador {
         return equipamentos;
     }
 
-    // metodos privados
+    // Metodos privados
+    private void atualizarEstadoJogador(int valorNovo) {
+        if (valorNovo <= 0) {
+            jogadorVivo.set(false);
+        }
+    }
 
-    // verifica se um valor esta presente em um enum
     private <T extends Enum<T>> boolean verificaExistencia(String nome, Class<T> enumClass) {
         try {
             Enum.valueOf(enumClass, nome);
@@ -250,41 +254,7 @@ public class Jogador {
         return valor;
     }
 
-    private void atualizarEstadoJogador(int valorNovo) {
-        if (valorNovo <= 0) {
-            jogadorVivo.set(false);
-        }
-    }
-
-    // metodos publicos
-    @Override
-    public String toString() {
-        return """
-                ID: %s
-                Nome: %s
-                Nível: %d
-                Classe: %s
-                Raça: %s
-                Vida: %d/%d
-                XP: %d/%d
-                Ouro: %d
-                Ataque: %d
-                Defesa: %d
-                """.formatted(
-                getID(),
-                getNome(),
-                getNivel(),
-                getClasse(),
-                getRaca(),
-                getVidaAtual(),
-                getVidaMax(),
-                getxpAtual(),
-                getxpProxNivel(),
-                getOuro(),
-                getAtaque(),
-                getDefesa());
-    }
-
+    // Métodos públicos
     public void aumentarAtributos(int nivelInicial, int nivelFinal) {
         // Atributos evoluem 20% inicialmente e a cada nível reduzem a evolução em 0,2%
         // até o mínimo de 0,1%

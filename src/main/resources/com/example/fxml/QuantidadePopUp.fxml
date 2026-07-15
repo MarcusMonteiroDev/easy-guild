@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="12.0" styleClass="vbox-container" stylesheets="@../styles/QuantidadePopUp.css" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.QuantidadePopUpController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="250.0" spacing="12.0" styleClass="vbox-container" stylesheets="@../styles/QuantidadePopUp.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controllers.QuantidadePopUpController">
    <children>
       <Label fx:id="labelErro" text="Digite um valor válido!" />
       
@@ -14,7 +14,7 @@
       
       <TextField fx:id="input" maxWidth="120.0" />
       
-      <Button defaultButton="true" mnemonicParsing="false" onAction="#confirmar" text="Confirmar" styleClass="btn-submit">
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#confirmar" styleClass="btn-submit" text="Confirmar">
          <VBox.margin>
             <Insets top="5.0" />
          </VBox.margin>
